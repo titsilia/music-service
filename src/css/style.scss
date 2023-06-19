@@ -91,6 +91,12 @@ body {
     cursor: pointer;
 }
 
+.btn_active {
+    border-color: #AD61FF;
+    color: #AD61FF;
+    cursor: pointer;
+}
+
 ._btn-icon:active svg {
     fill: transparent;
     stroke: #FFFFFF;
@@ -273,6 +279,12 @@ body {
         margin-right: 15px;
     }
 
+    &__container-btn {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+    }
+
     &__button {
         font-style: normal;
         font-weight: 400;
@@ -286,7 +298,60 @@ body {
             margin-right: 10px;
         }
     }
+
+    &__dropdown {
+        overflow-y: scroll;
+        overflow-x: hidden;
+        width: 248px;
+        height: 305px;
+        background: #313131;
+        border-radius: 12px;
+        display: flex;
+        flex-direction: column;
+        gap: 28px;
+        padding: 36.5px 24px 36.5px 34px;
+        &_author {
+            position: absolute;
+            left: 445px;
+            top: 290px;
+        }
+        &_year {
+            position: absolute;
+            left: 596px;
+            top: 290px;
+        }
+        &_genre {
+            position: absolute;
+            left: 741px;
+            top: 290px;
+        }
+        &_text {
+            font-size: 20px;
+            line-height: 24px;
+            font-feature-settings: 'pnum' on, 'lnum' on;
+            color: #FFFFFF;
+            
+            &:hover {
+                text-decoration-line: underline;
+                color: #B672FF;
+            }
+        }
+    }
 }
+
+.filter__dropdown::-webkit-scrollbar {
+    width: 4px;            /* ширина scrollbar */
+    height: 237px;
+  }
+.filter__dropdown::-webkit-scrollbar-track {
+    background: #4B4949; /* цвет дорожки */
+    border-radius: 10px;    /* скругление дорожки */ 
+  }
+.filter__dropdown::-webkit-scrollbar-thumb {
+    background: #FFFFFF;    /* цвет плашки */
+    border-radius: 10px;       /* закругления плашки */
+    // border: 3px solid orange;  /* padding вокруг плашки */
+  }
 
 
 .content {
@@ -349,7 +414,6 @@ body {
         width: 100%;
         display: block;
         margin-bottom: 12px;
-        
     }
 
     &__track {
@@ -367,6 +431,7 @@ body {
         flex-direction: row;
         align-items: center;
         width: 447px;
+        gap: 17px;
     }
 
     &__title-image {
@@ -386,7 +451,6 @@ body {
         fill: transparent;
         stroke: #4E4E4E;
     }
-
     //&__title-text {}
 
     &__title-link {
@@ -452,6 +516,30 @@ body {
 
     }
 }
+.skel {
+    &_image {
+        width: 51px;
+        height: 51px;
+        grid-area: image;
+        background: #313131;
+    }
+    &_title {
+        width: 443px;
+        height: 19px;
+        background: #313131;
+    }
+    &_author {
+        width: 320px;
+        height: 19px;
+        background: #313131;
+    }
+    &_track {
+        width: 59px;
+        height: 15px;
+        background: #313131;
+    }
+}
+
 
 
 
@@ -655,6 +743,7 @@ body {
         grid-template-columns: auto 1fr;
         grid-template-areas: 'image author''image album';
         align-items: center;
+        column-gap: 12px;
     }
 
     &__image {
@@ -664,7 +753,6 @@ body {
         display: flex;
         align-items: center;
         justify-content: center;
-        margin-right: 12px;
         grid-area: image;
     }
 

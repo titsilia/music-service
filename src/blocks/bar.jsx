@@ -11,8 +11,14 @@ import ButtonShuffle from './buttons/button-shuffle';
 import ButtonLike from './buttons/button-like';
 import ButtonDislike from './buttons/button-dislike';
 
+import SkelImage from './skeleton/skel-image';
+import SkelTrack from './skeleton/skel-track';
+
 import VolumeImage from './volume/volume-image';
 import VolumeProgress from './volume/volume-progress';
+
+const { useState, useEffect } = React;
+const interval = 100;
 
 function Bar() {
     return(
@@ -28,6 +34,20 @@ function Bar() {
 export default Bar
 
 function PlayerBlock() {
+    const [value, setValue] = useState(0);
+
+    // const increment = () => setVisible(value + 1);
+
+    useEffect(() => {
+        const timerId = setTimeout(() => {
+            <SkelRender />
+        }, 5000);
+
+        return () => {
+            clearTimeout(timerId);
+        };
+    });
+
     return(
         <div className="bar__player-block">
 
@@ -62,5 +82,25 @@ function PlayerBlock() {
                 </div>
             </div>
         </div>
+    );
+}
+
+function SkelRender() {
+    return (
+        <>
+            <SkelImage />
+            <SkelTrack />
+            <SkelTrack />
+        </>
+    );
+}
+
+function Trackrender() {
+    return (
+        <>
+            <TrackImage />
+            <Author author="Ты та..."/>
+            <Album album="Баста" />
+        </>
     );
 }

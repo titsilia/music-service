@@ -5,6 +5,11 @@ import Author from './track/author';
 import Album from './track/album';
 import TrackTime from './track/track-time';
 
+import SkelAuthor from './skeleton/skel-author';
+import SkelImage from './skeleton/skel-image';
+import SkelTitle from './skeleton/skel-title';
+
+const { useState } = React;
 
 function Main() {
     return (
@@ -18,29 +23,49 @@ function Main() {
 
 export default Main
 
+
+
 function Nav() {
+    const [visible, setVisible] = useState(false);
+
+    const toggleVisibility = () => setVisible(!visible);
+
     return (
         <nav className='main__nav nav'>
             <div className='nav__logo logo'>
                 <img className='logo__image' src="img/logo.png" alt="logo" />
             </div>
-            <div className='nav__burger burger'>
+            <div className='nav__burger burger' onClick={toggleVisibility}>
                 <span className="burger__line"></span>
                 <span className="burger__line"></span>
                 <span className="burger__line"></span>
             </div>
-            <div className="nav__menu menu">
-                <ul className="menu__list">
-                    <ul className="menu__item"><a href="http://" className="menu__link">Главное</a></ul>
-                    <ul className="menu__item"><a href="http://" className="menu__link">Мой плейлист</a></ul>
-                    <ul className="menu__item"><a href="http://" className="menu__link">Войти</a></ul>
-                </ul>
-            </div>
+
+            { visible && (
+                <NavMenu />
+            )}
+            
         </nav>
     );
 };
 
+function NavMenu() {
+    return (
+        <div className="nav__menu menu">
+            <ul className="menu__list">
+                <ul className="menu__item"><a href="http://" className="menu__link">Главное</a></ul>
+                <ul className="menu__item"><a href="http://" className="menu__link">Мой плейлист</a></ul>
+                <ul className="menu__item"><a href="http://" className="menu__link">Войти</a></ul>
+            </ul>
+        </div>
+    );
+};
+
 function CenterBlock() {
+    const [visibleFilter, setVisibleFilter] = useState(null);
+
+    const toggleVisibilityFilter = (filter) => setVisibleFilter(visibleFilter === filter ? null : filter);
+
     return (
         <div className="main__centerblock centerblock">
 
@@ -55,9 +80,19 @@ function CenterBlock() {
 
             <div className="centerblock__filter filter">
                 <div className="filter__title">Искать по:</div>
-                <div className="filter__button button-author  _btn-text">исполнителю</div>
-                <div className="filter__button button-year  _btn-text">году выпуска</div>
-                <div className="filter__button button-genre  _btn-text">жанру</div>
+                <div className='filter__container-btn'>
+                    <div className="filter__button button-author  _btn-text" onClick={() => toggleVisibilityFilter("author")}>исполнителю 
+                        {visibleFilter === "author" && <VisibleAuthor />}
+                    </div>
+
+                    <div className="filter__button button-year  _btn-text" onClick={() => toggleVisibilityFilter("year")}>году выпуска 
+                        {visibleFilter === "year" && <VisibleYear />}
+                    </div>
+
+                    <div className="filter__button button-genre  _btn-text" onClick={() => toggleVisibilityFilter("genre")}>жанру 
+                        {visibleFilter === "genre" && <VisibleGenre />}
+                    </div>
+                </div>
             </div>
 
             <div className="centerblock__content">
@@ -90,7 +125,45 @@ function CenterBlock() {
     );
 }
 
-function PlaylistItem({playlist_title, playlist_author, playlist_album, playlist_time}) {
+function VisibleAuthor() {
+    return( 
+        <>
+            <div className="filter__dropdown filter__dropdown_author">
+                <p className="filter__dropdown_text">Michael Jackson</p>
+                <p className="filter__dropdown_text">Frank Sinatra</p>
+                <p className="filter__dropdown_text">Calvin Harris</p>
+                <p className="filter__dropdown_text">Zhu</p>
+                <p className="filter__dropdown_text">Arctic Monkeys</p>
+                <p className="filter__dropdown_text">Calvin Harris</p>
+                <p className="filter__dropdown_text">Zhu</p>
+            </div>
+        </>
+     );
+}
+function VisibleYear() {
+    return( 
+        <div className="filter__dropdown filter__dropdown_year">
+            <p className="filter__dropdown_text">2023</p>
+            <p className="filter__dropdown_text">2022</p>
+            <p className="filter__dropdown_text">2021</p>
+            <p className="filter__dropdown_text">2020</p>
+            <p className="filter__dropdown_text">2019</p>
+        </div>
+     );
+}
+function VisibleGenre() {
+    return( 
+        <div className="filter__dropdown filter__dropdown_genre">
+            <p className="filter__dropdown_text">Jazz</p>
+            <p className="filter__dropdown_text">Rap</p>
+            <p className="filter__dropdown_text">Phonk</p>
+            <p className="filter__dropdown_text">Hyperpop</p>
+        </div>
+     );
+}
+
+function PlaylistItem(props) {
+    const {playlist_title, playlist_author, playlist_album, playlist_time} = props;
     return(
         <div className="playlist__item">
 
@@ -109,7 +182,6 @@ function PlaylistItem({playlist_title, playlist_author, playlist_album, playlist
         </div>
     );
 }
-
 
 
 function SlideBar() {
