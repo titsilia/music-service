@@ -74,12 +74,6 @@ body {
   cursor: pointer;
 }
 
-.btn_active {
-  border-color: #AD61FF;
-  color: #AD61FF;
-  cursor: pointer;
-}
-
 ._btn-icon:active svg {
   fill: transparent;
   stroke: #FFFFFF;
@@ -247,17 +241,28 @@ body {
 .filter__button:not(:last-child) {
   margin-right: 10px;
 }
+.filter__btn_active {
+  border: 1px solid #AD61FF;
+  color: #AD61FF;
+  cursor: pointer;
+}
 .filter__dropdown {
   overflow-y: scroll;
   overflow-x: hidden;
   display: flex;
   flex-direction: column;
+  width: 180px;
+  max-height: 237px;
+  background: #313131;
+  margin: 0 auto;
+  margin: 34px;
+  gap: 28px;
+}
+.filter__dropdown_ad {
   width: 248px;
   max-height: 305px;
   background: #313131;
-  padding: 36.5px 24px 36.5px 34px;
   border-radius: 12px;
-  gap: 28px;
 }
 .filter__dropdown_author {
   position: absolute;

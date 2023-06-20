@@ -63,9 +63,6 @@ function NavMenu() {
 
 function CenterBlock() {
     const [visibleFilter, setVisibleFilter] = useState(null);
-    const [isActive, setIsActive] = useState(false);
-
-    const toggleActive = () => setIsActive(!isActive);
 
     const toggleVisibilityFilter = (filter) => setVisibleFilter(visibleFilter === filter ? null : filter);
 
@@ -75,7 +72,7 @@ function CenterBlock() {
     useEffect(() => {
         const timerId = setTimeout(() => {
             setIsLoading(false)
-        }, 1000);
+        }, 5000);
 
         return () => {
             clearTimeout(timerId);
@@ -100,17 +97,19 @@ function CenterBlock() {
                         {visibleFilter === "author" && <VisibleAuthor />}
                         {visibleFilter === "year" && <VisibleYear />}
                         {visibleFilter === "genre" && <VisibleGenre />}
-                    <div className={isActive ? "filter__button button-author  _btn-text btn_active" : "filter__button button-author  _btn-text"} onClick={() => {toggleVisibilityFilter("author"), toggleActive}}>исполнителю 
-                        
-                        
+                    <div className={`filter__button button-author  _btn-text 
+                    ${visibleFilter === "author" ? 'filter__btn_active' : '_btn-text'}`} 
+                    onClick={() => toggleVisibilityFilter("author")}>исполнителю 
                     </div>
 
-                    <div className="filter__button button-year  _btn-text" onClick={() => toggleVisibilityFilter("year")}>году выпуска 
-                        
+                    <div className={`filter__button button-year  _btn-text 
+                    ${visibleFilter === "year" ? 'filter__btn_active' : '_btn-text'}`} 
+                    onClick={() => toggleVisibilityFilter("year")}>году выпуска 
                     </div>
 
-                    <div className="filter__button button-genre  _btn-text" onClick={() => toggleVisibilityFilter("genre")}>жанру 
-                        
+                    <div className={`filter__button button-genre  _btn-text 
+                    ${visibleFilter === "genre" ? 'filter__btn_active' : '_btn-text'}`} 
+                    onClick={() => toggleVisibilityFilter("genre")}>жанру 
                     </div>
                 </div>
             </div>
@@ -168,8 +167,8 @@ function CenterBlock() {
 function VisibleAuthor() {
     return( 
         <>
-            <div className='filter__dropdown_ad'>
-                <div className="filter__dropdown filter__dropdown_author">
+            <div className='filter__dropdown_ad filter__dropdown_author'>
+                <div className="filter__dropdown">
                     <p className="filter__dropdown_text">Michael Jackson</p>
                     <p className="filter__dropdown_text">Frank Sinatra</p>
                     <p className="filter__dropdown_text">Calvin Harris</p>
@@ -184,22 +183,26 @@ function VisibleAuthor() {
 }
 function VisibleYear() {
     return( 
-        <div className="filter__dropdown filter__dropdown_year">
-            <p className="filter__dropdown_text">2023</p>
-            <p className="filter__dropdown_text">2022</p>
-            <p className="filter__dropdown_text">2021</p>
-            <p className="filter__dropdown_text">2020</p>
-            <p className="filter__dropdown_text">2019</p>
+        <div className='filter__dropdown_ad filter__dropdown_year'>
+            <div className="filter__dropdown ">
+                <p className="filter__dropdown_text">2023</p>
+                <p className="filter__dropdown_text">2022</p>
+                <p className="filter__dropdown_text">2021</p>
+                <p className="filter__dropdown_text">2020</p>
+                <p className="filter__dropdown_text">2019</p>
+            </div>
         </div>
      );
 }
 function VisibleGenre() {
     return( 
-        <div className="filter__dropdown filter__dropdown_genre">
-            <p className="filter__dropdown_text">Jazz</p>
-            <p className="filter__dropdown_text">Rap</p>
-            <p className="filter__dropdown_text">Phonk</p>
-            <p className="filter__dropdown_text">Hyperpop</p>
+        <div className='filter__dropdown_ad filter__dropdown_genre'>
+            <div className="filter__dropdown ">
+                <p className="filter__dropdown_text">Jazz</p>
+                <p className="filter__dropdown_text">Rap</p>
+                <p className="filter__dropdown_text">Phonk</p>
+                <p className="filter__dropdown_text">Hyperpop</p>
+            </div>
         </div>
      );
 }
