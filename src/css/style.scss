@@ -302,14 +302,21 @@ body {
     &__dropdown {
         overflow-y: scroll;
         overflow-x: hidden;
-        width: 248px;
-        height: 305px;
-        background: #313131;
-        border-radius: 12px;
         display: flex;
         flex-direction: column;
-        gap: 28px;
+        width: 248px;
+        max-height: 305px;
+        background: #313131;
         padding: 36.5px 24px 36.5px 34px;
+        border-radius: 12px;
+        gap: 28px;
+        &_ad {
+            // padding: 36.5px 24px 36.5px 34px;
+            // width: 248px;
+            // height: 305px;
+            // background: #313131;
+            // border-radius: 12px;
+        }
         &_author {
             position: absolute;
             left: 445px;

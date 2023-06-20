@@ -18,7 +18,6 @@ import VolumeImage from './volume/volume-image';
 import VolumeProgress from './volume/volume-progress';
 
 const { useState, useEffect } = React;
-const interval = 100;
 
 function Bar() {
     return(
@@ -34,13 +33,12 @@ function Bar() {
 export default Bar
 
 function PlayerBlock() {
-    const [value, setValue] = useState(0);
+    const [isLoading, setIsLoading] = useState(true);
 
-    // const increment = () => setVisible(value + 1);
 
     useEffect(() => {
         const timerId = setTimeout(() => {
-            <SkelRender />
+            setIsLoading(false)
         }, 5000);
 
         return () => {
@@ -49,39 +47,46 @@ function PlayerBlock() {
     });
 
     return(
-        <div className="bar__player-block">
-
-            <div className="bar__player player">
-
-                <div className="player__controls">
-                    <ButtonPrev />
-                    <ButtonPlay />
-                    <ButtonNext />
-                    <ButtonRepeat />
-                    <ButtonShuffle />
-                </div>
-
-                <div className="player__track-play track-play">
-                    <div className="track-play__contain">
-                        <TrackImage />
-                        <Author author="Ты та..."/>
-                        <Album album="Баста" />
+                <div className="bar__player-block">
+    
+                    <div className="bar__player player">
+    
+                        <div className="player__controls">
+                            <ButtonPrev />
+                            <ButtonPlay />
+                            <ButtonNext />
+                            <ButtonRepeat />
+                            <ButtonShuffle />
+                        </div>
+    
+                        <div className="player__track-play track-play">
+                            <div className="track-play__contain">
+                                {
+                                    isLoading
+                                    ? <SkelRender />
+                                    :
+                                    <>
+                                        <TrackImage />
+                                        <Author author="Ты та..."/>
+                                        <Album album="Баста" />
+                                    </>
+                                 }
+                            </div>
+    
+                            <div className="track-play__like-dis">
+                                <ButtonLike />
+                                <ButtonDislike />
+                            </div>
+                        </div>
                     </div>
-
-                    <div className="track-play__like-dis">
-                        <ButtonLike />
-                        <ButtonDislike />
+    
+                    <div className="bar__volume-block volume">
+                        <div className="volume__content">
+                            <VolumeImage />
+                            <VolumeProgress />
+                        </div>
                     </div>
                 </div>
-            </div>
-
-            <div className="bar__volume-block volume">
-                <div className="volume__content">
-                    <VolumeImage />
-                    <VolumeProgress />
-                </div>
-            </div>
-        </div>
     );
 }
 

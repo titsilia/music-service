@@ -9,7 +9,7 @@ import SkelAuthor from './skeleton/skel-author';
 import SkelImage from './skeleton/skel-image';
 import SkelTitle from './skeleton/skel-title';
 
-const { useState } = React;
+const { useState, useEffect } = React;
 
 function Main() {
     return (
@@ -63,8 +63,24 @@ function NavMenu() {
 
 function CenterBlock() {
     const [visibleFilter, setVisibleFilter] = useState(null);
+    const [isActive, setIsActive] = useState(false);
+
+    const toggleActive = () => setIsActive(!isActive);
 
     const toggleVisibilityFilter = (filter) => setVisibleFilter(visibleFilter === filter ? null : filter);
+
+    const [isLoading, setIsLoading] = useState(true);
+
+
+    useEffect(() => {
+        const timerId = setTimeout(() => {
+            setIsLoading(false)
+        }, 1000);
+
+        return () => {
+            clearTimeout(timerId);
+        };
+    });
 
     return (
         <div className="main__centerblock centerblock">
@@ -81,16 +97,20 @@ function CenterBlock() {
             <div className="centerblock__filter filter">
                 <div className="filter__title">Искать по:</div>
                 <div className='filter__container-btn'>
-                    <div className="filter__button button-author  _btn-text" onClick={() => toggleVisibilityFilter("author")}>исполнителю 
                         {visibleFilter === "author" && <VisibleAuthor />}
+                        {visibleFilter === "year" && <VisibleYear />}
+                        {visibleFilter === "genre" && <VisibleGenre />}
+                    <div className={isActive ? "filter__button button-author  _btn-text btn_active" : "filter__button button-author  _btn-text"} onClick={() => {toggleVisibilityFilter("author"), toggleActive}}>исполнителю 
+                        
+                        
                     </div>
 
                     <div className="filter__button button-year  _btn-text" onClick={() => toggleVisibilityFilter("year")}>году выпуска 
-                        {visibleFilter === "year" && <VisibleYear />}
+                        
                     </div>
 
                     <div className="filter__button button-genre  _btn-text" onClick={() => toggleVisibilityFilter("genre")}>жанру 
-                        {visibleFilter === "genre" && <VisibleGenre />}
+                        
                     </div>
                 </div>
             </div>
@@ -108,17 +128,37 @@ function CenterBlock() {
                 </div>
 
                 <div className="content__playlist playlist">
-                    <PlaylistItem playlist_title="Guilt" playlist_author="Nero" playlist_album="Welcome Reality" playlist_time="4:44"/>
-                    <PlaylistItem playlist_title="Elektro" playlist_author="Dynoro, Outwork, Mr. Gee" playlist_album="Elektro" playlist_time="2:22"/>
-                    <PlaylistItem playlist_title="I’m Fire" playlist_author="Ali Bakgor" playlist_album="I’m Fire" playlist_time="2:22"/>
-                    <PlaylistItem playlist_title="Non Stop" playlist_author="Стоункат, Psychopath" playlist_album="Non Stop" playlist_time="4:12"/>
-                    <PlaylistItem playlist_title="Run Run" playlist_author="Jaded, Will Clarke, AR/CO" playlist_album="Run Run" playlist_time="2:54"/>
-                    <PlaylistItem playlist_title="Eyes on Fire" playlist_author="Blue Foundation, Zeds Dead" playlist_album="Eyes on Fire" playlist_time="5:20"/>
-                    <PlaylistItem playlist_title="Mucho Bien" playlist_author="HYBIT, Mr. Black, Offer Nissim, Hi Profile" playlist_album="Mucho Bien" playlist_time="3:41"/>
-                    <PlaylistItem playlist_title="Knives n Cherries" playlist_author="minthaze" playlist_album="Captivating" playlist_time="1:48"/>
-                    <PlaylistItem playlist_title="How Deep Is Your Love" playlist_author="Calvin Harris, Disciples" playlist_album="How Deep Is Your Love" playlist_time="3:32"/>
-                    <PlaylistItem playlist_title="Morena" playlist_author="Tom Boxer" playlist_album="Soundz Made in Romania" playlist_time="3:36"/>
-                    <PlaylistItem playlist_title="Guilt" playlist_author="Dynoro" playlist_album="Welcome" playlist_time="0"/>
+                    {
+                        isLoading
+                        ?   <>
+                                <SkelRenderMain />
+                                <SkelRenderMain />
+                                <SkelRenderMain />
+                                <SkelRenderMain />
+                                <SkelRenderMain />
+                                <SkelRenderMain />
+                                <SkelRenderMain />
+                                <SkelRenderMain />
+                                <SkelRenderMain />
+                                <SkelRenderMain />
+                                <SkelRenderMain />
+                            </>
+                        :
+                            <>
+                                <PlaylistItem playlist_title="Guilt" playlist_author="Nero" playlist_album="Welcome Reality" playlist_time="4:44"/>
+                                <PlaylistItem playlist_title="Elektro" playlist_author="Dynoro, Outwork, Mr. Gee" playlist_album="Elektro" playlist_time="2:22"/>
+                                <PlaylistItem playlist_title="I’m Fire" playlist_author="Ali Bakgor" playlist_album="I’m Fire" playlist_time="2:22"/>
+                                <PlaylistItem playlist_title="Non Stop" playlist_author="Стоункат, Psychopath" playlist_album="Non Stop" playlist_time="4:12"/>
+                                <PlaylistItem playlist_title="Run Run" playlist_author="Jaded, Will Clarke, AR/CO" playlist_album="Run Run" playlist_time="2:54"/>
+                                <PlaylistItem playlist_title="Eyes on Fire" playlist_author="Blue Foundation, Zeds Dead" playlist_album="Eyes on Fire" playlist_time="5:20"/>
+                                <PlaylistItem playlist_title="Mucho Bien" playlist_author="HYBIT, Mr. Black, Offer Nissim, Hi Profile" playlist_album="Mucho Bien" playlist_time="3:41"/>
+                                <PlaylistItem playlist_title="Knives n Cherries" playlist_author="minthaze" playlist_album="Captivating" playlist_time="1:48"/>
+                                <PlaylistItem playlist_title="How Deep Is Your Love" playlist_author="Calvin Harris, Disciples" playlist_album="How Deep Is Your Love" playlist_time="3:32"/>
+                                <PlaylistItem playlist_title="Morena" playlist_author="Tom Boxer" playlist_album="Soundz Made in Romania" playlist_time="3:36"/>
+                                <PlaylistItem playlist_title="Guilt" playlist_author="Dynoro" playlist_album="Welcome" playlist_time="0"/>
+                            </>
+                    
+                    }
                 </div>
             </div>
         </div>
@@ -128,14 +168,16 @@ function CenterBlock() {
 function VisibleAuthor() {
     return( 
         <>
-            <div className="filter__dropdown filter__dropdown_author">
-                <p className="filter__dropdown_text">Michael Jackson</p>
-                <p className="filter__dropdown_text">Frank Sinatra</p>
-                <p className="filter__dropdown_text">Calvin Harris</p>
-                <p className="filter__dropdown_text">Zhu</p>
-                <p className="filter__dropdown_text">Arctic Monkeys</p>
-                <p className="filter__dropdown_text">Calvin Harris</p>
-                <p className="filter__dropdown_text">Zhu</p>
+            <div className='filter__dropdown_ad'>
+                <div className="filter__dropdown filter__dropdown_author">
+                    <p className="filter__dropdown_text">Michael Jackson</p>
+                    <p className="filter__dropdown_text">Frank Sinatra</p>
+                    <p className="filter__dropdown_text">Calvin Harris</p>
+                    <p className="filter__dropdown_text">Zhu</p>
+                    <p className="filter__dropdown_text">Arctic Monkeys</p>
+                    <p className="filter__dropdown_text">Calvin Harris</p>
+                    <p className="filter__dropdown_text">Zhu</p>
+                </div>
             </div>
         </>
      );
@@ -160,6 +202,25 @@ function VisibleGenre() {
             <p className="filter__dropdown_text">Hyperpop</p>
         </div>
      );
+}
+
+function SkelRenderMain() {
+    return(
+        <div className="playlist__item">
+
+            <div className="playlist__track track">
+                <div className="track__title">
+                    <SkelImage />
+                    <SkelTitle />
+                </div>
+
+                <SkelAuthor />
+                <SkelTitle />
+
+            </div>
+
+        </div>
+    );
 }
 
 function PlaylistItem(props) {
