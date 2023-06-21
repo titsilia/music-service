@@ -1,0 +1,24 @@
+
+.volume {
+
+    &__image {
+        width: 13px;
+        height: 18px;
+        margin-right: 17px;
+    }
+
+    &__svg {
+        width: 13px;
+        height: 18px;
+        fill: transparent;
+
+    }
+
+    &__progress {
+        width: 109px;
+    }
+
+    &__progress-line {
+        width: 109px;
+    }
+}

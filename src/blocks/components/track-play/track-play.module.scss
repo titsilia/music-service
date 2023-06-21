@@ -1,0 +1,49 @@
+.track-play {
+
+    //track-image-play
+    &__image {
+        width: 51px;
+        height: 51px;
+        background-color: #313131;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        grid-area: image;
+    }
+
+    &__svg {
+        width: 18px;
+        height: 17px;
+        fill: transparent;
+        stroke: #4E4E4E;
+    } 
+
+    // author-play
+    &__author {
+        grid-area: author;
+        min-width: 49px;
+    }
+
+    &__author-link {
+        font-style: normal;
+        font-weight: 400;
+        font-size: 16px;
+        line-height: 24px;
+        color: #FFFFFF;
+        white-space: nowrap;
+    }
+
+    // album-play
+    &__album {
+        grid-area: album;
+        min-width: 49px;
+    }
+
+    &__album-link {
+        font-style: normal;
+        font-weight: 400;
+        font-size: 13px;
+        line-height: 24px;
+        color: #FFFFFF;
+    }
+}
