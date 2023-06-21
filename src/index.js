@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom/client';
 import './css/style.css';
 import Container from './container';
 
-const root = ReactDOM.createRoot(document.querySelector('.wrapper'));
+const root = ReactDOM.createRoot(document.querySelector('.root'));
 root.render(
   <React.StrictMode>
     <Container />

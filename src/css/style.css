@@ -1,3 +1,4 @@
+@charset "UTF-8";
 * {
   margin: 0;
   padding: 0;
@@ -223,6 +224,11 @@ body {
   line-height: 24px;
   margin-right: 15px;
 }
+.filter__container-btn {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
 .filter__button {
   font-style: normal;
   font-weight: 400;
@@ -234,6 +240,69 @@ body {
 }
 .filter__button:not(:last-child) {
   margin-right: 10px;
+}
+.filter__btn_active {
+  border: 1px solid #AD61FF;
+  color: #AD61FF;
+  cursor: pointer;
+}
+.filter__dropdown {
+  overflow-y: scroll;
+  overflow-x: hidden;
+  display: flex;
+  flex-direction: column;
+  width: 180px;
+  max-height: 237px;
+  background: #313131;
+  margin: 0 auto;
+  margin: 34px;
+  gap: 28px;
+}
+.filter__dropdown_ad {
+  width: 248px;
+  max-height: 305px;
+  background: #313131;
+  border-radius: 12px;
+}
+.filter__dropdown_author {
+  position: absolute;
+  left: 445px;
+  top: 290px;
+}
+.filter__dropdown_year {
+  position: absolute;
+  left: 596px;
+  top: 290px;
+}
+.filter__dropdown_genre {
+  position: absolute;
+  left: 741px;
+  top: 290px;
+}
+.filter__dropdown_text {
+  font-size: 20px;
+  line-height: 24px;
+  font-feature-settings: "pnum" on, "lnum" on;
+  color: #FFFFFF;
+}
+.filter__dropdown_text:hover {
+  text-decoration-line: underline;
+  color: #B672FF;
+}
+
+.filter__dropdown::-webkit-scrollbar {
+  width: 4px; /* ширина scrollbar */
+  height: 237px;
+}
+
+.filter__dropdown::-webkit-scrollbar-track {
+  background: #4B4949; /* цвет дорожки */
+  border-radius: 10px; /* скругление дорожки */
+}
+
+.filter__dropdown::-webkit-scrollbar-thumb {
+  background: #FFFFFF; /* цвет плашки */
+  border-radius: 10px; /* закругления плашки */
 }
 
 .content__title {
@@ -299,6 +368,7 @@ body {
   flex-direction: row;
   align-items: center;
   width: 447px;
+  gap: 17px;
 }
 .track__title-image {
   width: 51px;
@@ -367,6 +437,28 @@ body {
   line-height: 24px;
   text-align: right;
   color: #696969;
+}
+
+.skel_image {
+  width: 51px;
+  height: 51px;
+  grid-area: image;
+  background: #313131;
+}
+.skel_title {
+  width: 443px;
+  height: 19px;
+  background: #313131;
+}
+.skel_author {
+  width: 320px;
+  height: 19px;
+  background: #313131;
+}
+.skel_track {
+  width: 59px;
+  height: 15px;
+  background: #313131;
 }
 
 .sidebar__personal {
@@ -519,6 +611,8 @@ body {
   grid-template-columns: auto 1fr;
   grid-template-areas: "image author" "image album";
   align-items: center;
+  -moz-column-gap: 12px;
+       column-gap: 12px;
 }
 .track-play__image {
   width: 51px;
@@ -527,7 +621,6 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-right: 12px;
   grid-area: image;
 }
 .track-play__svg {
