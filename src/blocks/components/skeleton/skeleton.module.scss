@@ -1,0 +1,23 @@
+.skel {
+    &_image {
+        width: 51px;
+        height: 51px;
+        grid-area: image;
+        background: #313131;
+    }
+    &_title {
+        width: 443px;
+        height: 19px;
+        background: #313131;
+    }
+    &_author {
+        width: 320px;
+        height: 19px;
+        background: #313131;
+    }
+    &_track {
+        width: 59px;
+        height: 15px;
+        background: #313131;
+    }
+}

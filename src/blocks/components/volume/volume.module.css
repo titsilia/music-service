@@ -1,0 +1,16 @@
+.volume__image {
+  width: 13px;
+  height: 18px;
+  margin-right: 17px;
+}
+.volume__svg {
+  width: 13px;
+  height: 18px;
+  fill: transparent;
+}
+.volume__progress {
+  width: 109px;
+}
+.volume__progress-line {
+  width: 109px;
+}/*# sourceMappingURL=volume.module.css.map */

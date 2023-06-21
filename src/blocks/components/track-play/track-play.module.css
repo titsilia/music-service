@@ -1,0 +1,38 @@
+.track-play__image {
+  width: 51px;
+  height: 51px;
+  background-color: #313131;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  grid-area: image;
+}
+.track-play__svg {
+  width: 18px;
+  height: 17px;
+  fill: transparent;
+  stroke: #4E4E4E;
+}
+.track-play__author {
+  grid-area: author;
+  min-width: 49px;
+}
+.track-play__author-link {
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 24px;
+  color: #FFFFFF;
+  white-space: nowrap;
+}
+.track-play__album {
+  grid-area: album;
+  min-width: 49px;
+}
+.track-play__album-link {
+  font-style: normal;
+  font-weight: 400;
+  font-size: 13px;
+  line-height: 24px;
+  color: #FFFFFF;
+}/*# sourceMappingURL=track-play.module.css.map */
