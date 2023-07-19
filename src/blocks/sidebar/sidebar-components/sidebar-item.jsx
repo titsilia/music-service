@@ -1,17 +1,19 @@
 import React from "react";
 
-import styles from "./sidebar.module.css";
+import styles from "./sidebar-items.module.css";
 
-function SidebarItem() {
+import { Link } from "react-router-dom";
+
+function SidebarItem({img, link}) {
     return (
       <div className={styles.sidebar__item}>
-        <a href="#" className={styles.sidebar__link}>
+        <Link to={link} className={styles.sidebar__link}>
           <img
-            src="img/playlist01.png"
+            src={img}
             alt="day's playlist"
             className={styles.sidebar__img}
           />
-        </a>
+        </Link>
       </div>
     );
   }

@@ -2,7 +2,7 @@ import React from "react";
 
 import styles from "./bar.module.css";
 
-import PlayerBlock from "./bar/player-block";
+import PlayerBlock from "./bar-components/player-block";
 
 function Bar() {
   return (

@@ -2,12 +2,12 @@ import React from "react";
 
 import styles from "./centerblock.module.css";
 
-import PlaylistItem from "./playlist-item";
-import SkelRenderCenterblock from "./skel-render-centerblock";
+import PlaylistItem from "./centerblock-components/playlist-item";
+import SkelRenderCenterblock from "./centerblock-components/skel-render-centerblock";
 
-import VisibleYear from "./visible-year";
-import VisibleAuthor from "./visible-author";
-import VisibleGenre from "./visible-genre";
+import VisibleYear from "./centerblock-components/visible-year";
+import VisibleAuthor from "./centerblock-components/visible-author";
+import VisibleGenre from "./centerblock-components/visible-genre";
 
 const { useState, useEffect } = React;
 
@@ -57,7 +57,7 @@ function CenterBlock() {
                       ${
                         visibleFilter === "author"
                           ? styles.filter__btn_active
-                          : styles['_btn-text']
+                          : styles["_btn-text"]
                       }`}
             onClick={() => toggleVisibilityFilter("author")}
           >
@@ -70,7 +70,7 @@ function CenterBlock() {
                       ${
                         visibleFilter === "year"
                           ? styles.filter__btn_active
-                          : styles['_btn-text']
+                          : styles["_btn-text"]
                       }`}
             onClick={() => toggleVisibilityFilter("year")}
           >
@@ -78,11 +78,13 @@ function CenterBlock() {
           </div>
 
           <div
-            className={`${styles.filter__button} ${styles["button-genre"]}  ${styles["_btn-text"]} 
+            className={`${styles.filter__button} ${styles["button-genre"]}  ${
+              styles["_btn-text"]
+            } 
                       ${
                         visibleFilter === "genre"
                           ? styles.filter__btn_active
-                          : styles['_btn-text']
+                          : styles["_btn-text"]
                       }`}
             onClick={() => toggleVisibilityFilter("genre")}
           >

@@ -1,11 +1,16 @@
-import React from 'react';
-import ReactDOM from 'react-dom/client';
-import Container from './container';
+import React from "react";
+import ReactDOM from "react-dom/client";
 
-const root = ReactDOM.createRoot(document.querySelector('.root'));
+import { BrowserRouter } from "react-router-dom";
+
+import global from "./global.module.css";
+import Container from "./container";
+
+const root = ReactDOM.createRoot(document.querySelector(".root"));
 root.render(
   <React.StrictMode>
-    <Container />
+    <BrowserRouter>
+      <Container />
+    </BrowserRouter>
   </React.StrictMode>
 );
-
