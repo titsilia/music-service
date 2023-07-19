@@ -1,0 +1,21 @@
+.skel_image {
+  width: 51px;
+  height: 51px;
+  grid-area: image;
+  background: #313131;
+}
+.skel_title {
+  width: 443px;
+  height: 19px;
+  background: #313131;
+}
+.skel_author {
+  width: 320px;
+  height: 19px;
+  background: #313131;
+}
+.skel_track {
+  width: 59px;
+  height: 15px;
+  background: #313131;
+}/*# sourceMappingURL=skeleton.module.css.map */

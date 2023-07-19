@@ -1,0 +1,59 @@
+@charset "UTF-8";
+.filter__dropdown {
+  overflow-y: scroll;
+  overflow-x: hidden;
+  display: flex;
+  flex-direction: column;
+  width: 180px;
+  max-height: 237px;
+  background: #313131;
+  margin: 0 auto;
+  margin: 34px;
+  gap: 28px;
+}
+.filter__dropdown_ad {
+  width: 248px;
+  max-height: 305px;
+  background: #313131;
+  border-radius: 12px;
+}
+.filter__dropdown_author {
+  position: absolute;
+  left: 445px;
+  top: 290px;
+}
+.filter__dropdown_year {
+  position: absolute;
+  left: 596px;
+  top: 290px;
+}
+.filter__dropdown_genre {
+  position: absolute;
+  left: 741px;
+  top: 290px;
+}
+.filter__dropdown_text {
+  font-size: 20px;
+  line-height: 24px;
+  font-feature-settings: "pnum" on, "lnum" on;
+  color: #FFFFFF;
+}
+.filter__dropdown_text:hover {
+  text-decoration-line: underline;
+  color: #B672FF;
+}
+
+.filter__dropdown::-webkit-scrollbar {
+  width: 4px; /* ширина scrollbar */
+  height: 237px;
+}
+
+.filter__dropdown::-webkit-scrollbar-track {
+  background: #4B4949; /* цвет дорожки */
+  border-radius: 10px; /* скругление дорожки */
+}
+
+.filter__dropdown::-webkit-scrollbar-thumb {
+  background: #FFFFFF; /* цвет плашки */
+  border-radius: 10px; /* закругления плашки */
+}/*# sourceMappingURL=visible.module.css.map */
