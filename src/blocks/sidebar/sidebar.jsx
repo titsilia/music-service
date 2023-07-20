@@ -37,9 +37,9 @@ function SlideBar() {
             </>
           ) : (
             <>
-              <SidebarItem img="img/playlist01.png" link="/daily"/>
-              <SidebarItem img="img/playlist02.png" link="/hits" />
-              <SidebarItem img="img/playlist03.png" link="/indie"/>
+              <SidebarItem img="img/playlist01.png" link="/category/daily"/>
+              <SidebarItem img="img/playlist02.png" link="/category/hits" />
+              <SidebarItem img="img/playlist03.png" link="/category/indie"/>
             </>
           )}
         </div>
