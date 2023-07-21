@@ -2,12 +2,12 @@ import React from 'react';
 
 import styles from "./track.module.css";
 
+import note from "../../../assets/img/icon/note.svg";
+
 function TrackImage() {
     return(
         <div className={styles['track__title-image']}>
-            <svg className={styles['track__title-svg']} alt="music">
-                <use href="img/icon/sprite.svg#icon-note"></use>
-            </svg>
+            <img className={styles['track__title-svg']} src={note} alt="imageS" />
         </div>
     );
 }

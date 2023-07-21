@@ -1,5 +1,7 @@
 import React from "react";
 
+import imageTrack from '../../assets/img/logo.png'
+
 import styles from "./centerblock.module.css";
 
 import PlaylistItem from "./centerblock-components/playlist-item";

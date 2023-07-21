@@ -2,6 +2,9 @@ import React from "react";
 
 import styles from "./player-block.module.scss";
 
+import play from "../../../assets/img/icon/play.svg";
+import pause from "../../../assets/img/icon/pause.svg";
+
 import styleBtn from "../../components/buttons/buttons.module.scss";
 
 import SkelRenderBar from "./skel-render-bar";
@@ -89,11 +92,11 @@ function PlayerBlock() {
               onClick={playBtn}
               className={` ${styleBtn["player__btn-play"]} ${styleBtn["_btn"]} `}
             >
-              <svg className={styleBtn["player__btn-play-svg"]} alt="play">
-                <use
-                  href={`img/icon/sprite.svg#icon-${isPlay ? "pause" : "play"}`}
-                ></use>
-              </svg>
+              <img
+                src={`${isPlay ? pause : play}`}
+                className={styleBtn["player__btn-play-svg"]}
+                alt="play"
+              />
             </div>
 
             <ButtonNext />

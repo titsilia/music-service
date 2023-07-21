@@ -1,11 +1,11 @@
 import styles from "./buttons.module.scss";
 
+import next from "../../../assets/img/icon/next.svg";
+
 function ButtonNext() {
     return(
         <div className={styles["player__btn-next"]}>
-            <svg className={styles["player__btn-next-svg"]} alt="next">
-                <use href="img/icon/sprite.svg#icon-next"></use>
-            </svg>
+            <img src={next} className={styles["player__btn-next-svg"]} alt="дальше" />
         </div>
     );
 }
