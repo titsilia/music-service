@@ -68,7 +68,8 @@ function PlayerBlock() {
           setPlay(false);
         }
       }, 10);
-    } else {
+    } 
+    return () => {
       clearInterval(window.play);
     }
   });
