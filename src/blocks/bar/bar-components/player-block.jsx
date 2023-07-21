@@ -1,9 +1,7 @@
 import React from "react";
 
 import styles from "./player-block.module.scss";
-
-import play from "../../../assets/img/icon/play.svg";
-import pause from "../../../assets/img/icon/pause.svg";
+import sprite from "../../../assets/img/icon/sprite.svg";
 
 import styleBtn from "../../components/buttons/buttons.module.scss";
 
@@ -68,8 +66,7 @@ function PlayerBlock() {
           setPlay(false);
         }
       }, 10);
-    } 
-    return () => {
+    } else {
       clearInterval(window.play);
     }
   });
@@ -93,11 +90,11 @@ function PlayerBlock() {
               onClick={playBtn}
               className={` ${styleBtn["player__btn-play"]} ${styleBtn["_btn"]} `}
             >
-              <img
-                src={`${isPlay ? pause : play}`}
-                className={styleBtn["player__btn-play-svg"]}
-                alt="play"
-              />
+              <svg className={styleBtn["player__btn-play-svg"]} alt="play">
+                <use
+                  href={`${sprite}#icon-${isPlay ? "pause" : "play"}`}
+                ></use>
+              </svg>
             </div>
 
             <ButtonNext />

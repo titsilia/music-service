@@ -1,11 +1,13 @@
 import styles from "./buttons.module.scss";
 
-import repeat from "../../../assets/img/icon/repeat.svg";
+import sprite from "../../../assets/img/icon/sprite.svg";
 
 function ButtonRepeat() {
     return(
         <div className={` ${styles["player__btn-repeat"]} ${styles["_btn-icon"]} `}>
-            <img src={repeat} className={styles["player__btn-repeat-svg"]} alt="повторить" />
+            <svg className={styles["player__btn-repeat-svg"]} alt="repeat">
+                <use xlinkHref={`${sprite}#icon-repeat`}></use>
+            </svg>
         </div>
     );
 }

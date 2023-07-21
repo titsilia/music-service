@@ -8,6 +8,11 @@
   padding: 36px 90px 20px 78px;
 }
 
+.playlist__sidebar_exit {
+  width: 40px;
+  height: 40px;
+}
+
 .sidebar__block {
   height: 100%;
   padding: 240px 0 0 0;

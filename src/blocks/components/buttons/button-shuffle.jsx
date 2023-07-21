@@ -1,17 +1,15 @@
 import styles from "./buttons.module.scss";
 
-import shuffle from "../../../assets/img/icon/shuffle.svg";
+import sprite from "../../../assets/img/icon/sprite.svg";
 
 function ButtonShuffle() {
   return (
     <div
       className={` ${styles["player__btn-shuffle"]} ${styles["_btn-icon"]} `}
     >
-      <img
-        src={shuffle}
-        className={styles["player__btn-shuffle-svg"]}
-        alt="перемешать"
-      />
+      <svg className={styles["player__btn-shuffle-svg"]} alt="shuffle">
+        <use xlinkHref={`${sprite}#icon-shuffle`}></use>
+      </svg>
     </div>
   );
 }

@@ -1,11 +1,13 @@
 import styles from "./buttons.module.scss";
 
-import dislike from "../../../assets/img/icon/dislike.svg";
+import sprite from "../../../assets/img/icon/sprite.svg";
 
 function ButtonDislike() {
     return(
         <div className={` ${styles['track-play__dislike']} ${styles['_btn-icon']} `}>
-            <img src={dislike} className={styles['track-play__dislike-svg']} alt="не нравится" />
+            <svg className={styles['track-play__dislike-svg']} alt="dislike">
+                <use xlinkHref={`${sprite}#icon-dislike`}></use>
+            </svg>
         </div>
     );
 }

@@ -1,13 +1,15 @@
 import styles from "./buttons.module.scss";
 
-import prev from "../../../assets/img/icon/prev.svg";
+import sprite from "../../../assets/img/icon/sprite.svg";
 
 function ButtonPrev() {
-  return (
-    <div className={styles["player__btn-prev"]}>
-      <img src={prev} className={styles["player__btn-prev-svg"]} alt="назад" />
-    </div>
-  );
+    return(
+        <div className={styles["player__btn-prev"]}>
+            <svg className={styles["player__btn-prev-svg"]} alt="prev">
+                <use xlinkHref={`${sprite}#icon-prev`}></use>
+            </svg>
+        </div>
+    );
 }
 
-export default ButtonPrev;
+export default ButtonPrev

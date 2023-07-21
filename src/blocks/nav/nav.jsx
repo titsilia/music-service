@@ -1,6 +1,7 @@
 import React from "react";
 import NavMenu from "./NavMenu/nav-menu";
-import logo from '../../assets/img/logo.png'
+
+import logo from "../../assets/img/logo.png";
 import styles from "./nav.module.css";
 
 const { useState } = React;

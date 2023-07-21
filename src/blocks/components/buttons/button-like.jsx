@@ -1,11 +1,13 @@
 import styles from "./buttons.module.scss";
 
-import like from "../../../assets/img/icon/like.svg";
+import sprite from "../../../assets/img/icon/sprite.svg";
 
 function ButtonLike() {
     return(
         <div className={` ${styles['track-play__like']} ${styles['_btn-icon']} `}>
-            <img src={like} className={styles['track-play__like-svg']} alt="нравится" />
+            <svg className={styles['track-play__like-svg']} alt="like">
+                <use xlinkHref={`${sprite}#icon-like`}></use>
+            </svg>
         </div>
     );
 }

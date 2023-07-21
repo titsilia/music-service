@@ -1,5 +1,7 @@
 import styles from "./buttons.module.scss";
 
+import sprite from "../../../assets/img/icon/sprite.svg";
+
 function ButtonPlay({ func }) {
 
     function playBtn() {
@@ -9,7 +11,7 @@ function ButtonPlay({ func }) {
   return (
     <div onClick={playBtn} className={` ${styles["player__btn-play"]} ${styles["_btn"]} `}>
       <svg className={styles["player__btn-play-svg"]} alt="play">
-        <use href="img/icon/sprite.svg#icon-play"></use>
+        <use xlinkHref={`${sprite}#icon-play`}></use>
       </svg>
     </div>
   );

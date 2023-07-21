@@ -5,7 +5,9 @@ import styles from "./track-play.module.css";
 function TrackImagePlay({img}) {
     return(
         <div className={styles['track-play__image']}>
-            <img src={img} className={styles['track-play__svg']} alt="note" />
+            <svg className={styles['track-play__svg']} alt="music">
+                <use xlinkHref={img}></use>
+            </svg>
         </div>
     );
 }

@@ -1,11 +1,13 @@
 import styles from "./volume.module.scss";
 
-import volume from "../../../assets/img/icon/volume.svg";
+import sprite from "../../../assets/img/icon/sprite.svg";
 
 function VolumeImage() {
     return(
         <div className={styles.volume__image}>
-            <img src={volume} className={styles.volume__svg} alt="громкость" />
+            <svg className={styles.volume__svg} alt="volume">
+                <use xlinkHref={`${sprite}#icon-volume`}></use>
+            </svg>
         </div>
     );
 }

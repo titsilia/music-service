@@ -1,11 +1,11 @@
 import React from "react";
 
-import imageTrack from '../../assets/img/logo.png'
-
 import styles from "./centerblock.module.css";
 
 import PlaylistItem from "./centerblock-components/playlist-item";
 import SkelRenderCenterblock from "./centerblock-components/skel-render-centerblock";
+
+import sprite from "../../assets/img/icon/sprite.svg";
 
 const { useState, useEffect } = React;
 
@@ -27,7 +27,7 @@ function CenterBlockPlaylists({h2}) {
     <div className={`${styles.main__centerblock} ${styles.centerblock}`}>
       <div className={`${styles.centerblock__search} ${styles.search}`}>
         <svg className={styles.search__svg}>
-          <use href="img/icon/sprite.svg#icon-search"></use>
+          <use xlinkHref={`${sprite}#icon-search`}></use>
         </svg>
         <input
           className={styles.search__text}
@@ -52,7 +52,7 @@ function CenterBlockPlaylists({h2}) {
           </div>
           <div className={`${styles.playlist_title__col} ${styles.col04}`}>
             <svg className={styles.playlist_title__svg} alt="time">
-              <use href="img/icon/sprite.svg#icon-watch"></use>
+              <use xlinkHref={`${sprite}#icon-watch`}></use>
             </svg>
           </div>
         </div>

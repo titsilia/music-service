@@ -9,6 +9,8 @@ import VisibleYear from "./centerblock-components/visible-year";
 import VisibleAuthor from "./centerblock-components/visible-author";
 import VisibleGenre from "./centerblock-components/visible-genre";
 
+import sprite from "../../assets/img/icon/sprite.svg";
+
 const { useState, useEffect } = React;
 
 function CenterBlock() {
@@ -33,7 +35,7 @@ function CenterBlock() {
     <div className={`${styles.main__centerblock} ${styles.centerblock}`}>
       <div className={`${styles.centerblock__search} ${styles.search}`}>
         <svg className={styles.search__svg}>
-          <use href="img/icon/sprite.svg#icon-search"></use>
+          <use xlinkHref={`${sprite}#icon-search`}></use>
         </svg>
         <input
           className={styles.search__text}
@@ -106,7 +108,7 @@ function CenterBlock() {
           </div>
           <div className={`${styles.playlist_title__col} ${styles.col04}`}>
             <svg className={styles.playlist_title__svg} alt="time">
-              <use href="img/icon/sprite.svg#icon-watch"></use>
+              <use xlinkHref={`${sprite}#icon-watch`}></use>
             </svg>
           </div>
         </div>
