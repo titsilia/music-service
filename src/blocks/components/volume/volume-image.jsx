@@ -1,13 +1,11 @@
 import styles from "./volume.module.scss";
 
-import sprite from "../../../assets/img/icon/sprite.svg";
+import {ReactComponent as Volume} from "../../../assets/img/icon/volume.svg";
 
 function VolumeImage() {
     return(
         <div className={styles.volume__image}>
-            <svg className={styles.volume__svg} alt="volume">
-                <use xlinkHref={`${sprite}#icon-volume`}></use>
-            </svg>
+            <Volume className={styles.volume__svg} />
         </div>
     );
 }

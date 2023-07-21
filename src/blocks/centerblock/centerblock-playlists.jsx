@@ -7,6 +7,9 @@ import SkelRenderCenterblock from "./centerblock-components/skel-render-centerbl
 
 import sprite from "../../assets/img/icon/sprite.svg";
 
+import {ReactComponent as Search} from "../../assets/img/icon/search.svg";
+import {ReactComponent as Watch} from "../../assets/img/icon/watch.svg";
+
 const { useState, useEffect } = React;
 
 function CenterBlockPlaylists({h2}) {
@@ -26,9 +29,7 @@ function CenterBlockPlaylists({h2}) {
   return (
     <div className={`${styles.main__centerblock} ${styles.centerblock}`}>
       <div className={`${styles.centerblock__search} ${styles.search}`}>
-        <svg className={styles.search__svg}>
-          <use xlinkHref={`${sprite}#icon-search`}></use>
-        </svg>
+        <Search className={styles.search__svg} />
         <input
           className={styles.search__text}
           type="search"
@@ -51,9 +52,7 @@ function CenterBlockPlaylists({h2}) {
             АЛЬБОМ
           </div>
           <div className={`${styles.playlist_title__col} ${styles.col04}`}>
-            <svg className={styles.playlist_title__svg} alt="time">
-              <use xlinkHref={`${sprite}#icon-watch`}></use>
-            </svg>
+            <Watch />
           </div>
         </div>
 
