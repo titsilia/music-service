@@ -1,13 +1,11 @@
 import styles from "./buttons.module.scss";
 
-import sprite from "../../../assets/img/icon/sprite.svg";
+import {ReactComponent as Prev} from "../../../assets/img/icon/prev.svg";
 
 function ButtonPrev() {
     return(
         <div className={styles["player__btn-prev"]}>
-            <svg className={styles["player__btn-prev-svg"]} alt="prev">
-                <use xlinkHref={`${sprite}#icon-prev`}></use>
-            </svg>
+            <Prev className={styles["player__btn-prev-svg"]} />
         </div>
     );
 }

@@ -71,7 +71,6 @@ function PlayerBlock() {
     }
   });
 
-  console.log(1);
   return (
     <>
       <div className={styles["bar__player-progress"]}>
