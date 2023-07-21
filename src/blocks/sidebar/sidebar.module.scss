@@ -3,13 +3,12 @@
     padding: 20px 90px 20px 78px;
 
 }
+.playlists__sidebar {
+    max-width: 418px;
+    padding: 36px 90px 20px 78px;
+
+}
 .sidebar {
-    &__avatar {
-        width: 43px;
-        height: 43px;
-        background-color: #313131;
-        border-radius: 50%;
-    }
 
     &__block {
         height: 100%;

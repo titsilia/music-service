@@ -2,24 +2,50 @@ import React from "react";
 
 import styles from "./sidebar.module.css";
 
-import SidebarPersonal from "./sidebar-personal";
-import SidebarItem from "./sidebar-item";
+
+import SidebarPersonal from "./sidebar-components/sidebar-personal";
+import SidebarItem from "./sidebar-components/sidebar-item";
+
+import SkelSidebarImage from "../components/skeleton/skel-sibedar_image";
+
+const { useState, useEffect } = React;
 
 function SlideBar() {
-    return (
-      <div className={`${styles.main__sidebar} ${styles.sidebar}`}>
-        <SidebarPersonal name="Sergey.Ivanov" />
-        <div className={styles.sidebar__avatar}></div>
-  
-        <div className={styles.sidebar__block}>
-          <div className={styles.sidebar__list}>
-            <SidebarItem />
-            <SidebarItem />
-            <SidebarItem />
-          </div>
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    const timerId = setTimeout(() => {
+      setIsLoading(false);
+    }, 5000);
+
+    return () => {
+      clearTimeout(timerId);
+    };
+  });
+
+  return (
+    <div className={`${styles.main__sidebar} ${styles.sidebar}`}>
+      <SidebarPersonal name="Sergey.Ivanov" />
+
+      <div className={styles.sidebar__block}>
+        <div className={styles.sidebar__list}>
+          {isLoading ? (
+            <>
+              <SkelSidebarImage />
+              <SkelSidebarImage />
+              <SkelSidebarImage />
+            </>
+          ) : (
+            <>
+              <SidebarItem img="img/playlist01.png" link="/category/daily"/>
+              <SidebarItem img="img/playlist02.png" link="/category/hits" />
+              <SidebarItem img="img/playlist03.png" link="/category/indie"/>
+            </>
+          )}
         </div>
       </div>
-    );
-  }
+    </div>
+  );
+}
 
 export default SlideBar;

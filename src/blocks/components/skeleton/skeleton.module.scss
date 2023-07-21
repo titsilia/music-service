@@ -1,23 +1,37 @@
 .skel {
-    &_image {
-        width: 51px;
-        height: 51px;
-        grid-area: image;
-        background: #313131;
+  &_image {
+    width: 51px;
+    height: 51px;
+    grid-area: image;
+    background: #313131;
+  }
+  &_title {
+    width: 29%;
+    height: 19px;
+    background: #313131;
+  }
+  &_name__track {
+    width: 80%;
+    height: 19px;
+    background: #313131;
+  }
+  &_author {
+    width: 26%;
+    height: 19px;
+    background: #313131;
+  }
+  &_track {
+    width: 59px;
+    height: 15px;
+    background: #313131;
+  }
+  &_sidebar_image {
+    width: 250px;
+    height: 150px;
+    background: #313131;
+    
+    &:not(:last-child) {
+        margin-bottom: 30px;
     }
-    &_title {
-        width: 443px;
-        height: 19px;
-        background: #313131;
-    }
-    &_author {
-        width: 320px;
-        height: 19px;
-        background: #313131;
-    }
-    &_track {
-        width: 59px;
-        height: 15px;
-        background: #313131;
-    }
+  }
 }

@@ -5,12 +5,17 @@
   background: #313131;
 }
 .skel_title {
-  width: 443px;
+  width: 29%;
+  height: 19px;
+  background: #313131;
+}
+.skel_name__track {
+  width: 80%;
   height: 19px;
   background: #313131;
 }
 .skel_author {
-  width: 320px;
+  width: 26%;
   height: 19px;
   background: #313131;
 }
@@ -18,4 +23,12 @@
   width: 59px;
   height: 15px;
   background: #313131;
+}
+.skel_sidebar_image {
+  width: 250px;
+  height: 150px;
+  background: #313131;
+}
+.skel_sidebar_image:not(:last-child) {
+  margin-bottom: 30px;
 }/*# sourceMappingURL=skeleton.module.css.map */
