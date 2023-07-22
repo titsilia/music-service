@@ -1,7 +1,9 @@
 import React from "react";
 
 import styles from "./sidebar.module.css";
+import color from "../../themes.module.css";
 
+import { useThemeContext } from "../../context/theme";
 
 import SidebarPersonal from "./sidebar-components/sidebar-personal";
 import SidebarItem from "./sidebar-components/sidebar-item";
@@ -11,6 +13,7 @@ import SkelSidebarImage from "../components/skeleton/skel-sibedar_image";
 const { useState, useEffect } = React;
 
 function SlideBar() {
+  const { theme } = useThemeContext();
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
@@ -24,7 +27,7 @@ function SlideBar() {
   });
 
   return (
-    <div className={`${styles.main__sidebar} ${styles.sidebar}`}>
+    <div className={`${styles.main__sidebar} ${styles.sidebar} ${theme === 'light' ? color.light__background : color.dark__main_background} `}>
       <SidebarPersonal name="Sergey.Ivanov" />
 
       <div className={styles.sidebar__block}>

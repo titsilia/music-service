@@ -8,13 +8,17 @@
   width: 14.34px;
   height: 13px;
   fill: transparent;
-  stroke: #696969;
+}
+.track-play__dislike-svg:hover * {
+  stroke: #ACACAC;
 }
 .track-play__like-svg {
   width: 14px;
   height: 12px;
   fill: transparent;
-  stroke: #696969;
+}
+.track-play__like-svg:hover * {
+  stroke: #ACACAC;
 }
 
 .player__btn-prev, .player__btn-play, .player__btn-next, .player__btn-repeat, .player__btn-shuffle {
@@ -29,23 +33,29 @@
   width: 15px;
   height: 14px;
 }
+.player__btn-prev-svg:hover * {
+  fill: #ACACAC;
+}
 .player__btn-play {
   margin-right: 23px;
 }
 .player__btn-play-svg {
   width: 22px;
   height: 20px;
-  fill: #d9d9d9;
+}
+.player__btn-play-svg:hover * {
+  fill: #696969;
 }
 .player__btn-next {
   margin-right: 28px;
-  fill: #a53939;
 }
 .player__btn-next-svg {
   width: 15px;
   height: 14px;
   fill: inherit;
-  stroke: #d9d9d9;
+}
+.player__btn-next-svg:hover * {
+  fill: #696969;
 }
 .player__btn-repeat {
   margin-right: 24px;
@@ -54,7 +64,9 @@
   width: 18px;
   height: 12px;
   fill: transparent;
-  stroke: #696969;
+}
+.player__btn-repeat-svg:hover * {
+  fill: #ACACAC;
 }
 .player__btn-shuffle {
   display: flex;
@@ -64,5 +76,7 @@
   width: 19px;
   height: 12px;
   fill: transparent;
-  stroke: #696969;
+}
+.player__btn-shuffle-svg:hover * {
+  fill: #ACACAC;
 }/*# sourceMappingURL=buttons.module.css.map */
