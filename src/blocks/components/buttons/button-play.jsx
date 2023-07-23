@@ -1,5 +1,7 @@
 import styles from "./buttons.module.scss";
 
+import {ReactComponent as Play} from "../../../assets/img/icon/play.svg";
+
 function ButtonPlay({ func }) {
 
     function playBtn() {
@@ -8,9 +10,7 @@ function ButtonPlay({ func }) {
 
   return (
     <div onClick={playBtn} className={` ${styles["player__btn-play"]} ${styles["_btn"]} `}>
-      <svg className={styles["player__btn-play-svg"]} alt="play">
-        <use href="img/icon/sprite.svg#icon-play"></use>
-      </svg>
+      <Play className={styles["player__btn-play-svg"]} />
     </div>
   );
 }

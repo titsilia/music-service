@@ -1,27 +1,28 @@
 .main__sidebar {
-    max-width: 418px;
-    padding: 20px 90px 20px 78px;
-
+  max-width: 418px;
+  padding: 20px 90px 20px 78px;
 }
 .playlists__sidebar {
-    max-width: 418px;
-    padding: 36px 90px 20px 78px;
+  max-width: 418px;
+  padding: 36px 90px 20px 78px;
+}
 
+.playlist__sidebar_exit {
+  width: 40px;
+  height: 40px;
 }
 .sidebar {
+  &__block {
+    height: 100%;
+    padding: 240px 0 0 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+  }
 
-    &__block {
-        height: 100%;
-        padding: 240px 0 0 0;
-        display: flex;
-        flex-direction: column;
-        justify-content: flex-start;
-    }
-
-    &__list {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-    }
+  &__list {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
 }
-

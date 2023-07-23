@@ -1,6 +1,7 @@
 import React from "react";
 
 import styles from "./player-block.module.scss";
+import sprite from "../../../assets/img/icon/sprite.svg";
 
 import styleBtn from "../../components/buttons/buttons.module.scss";
 
@@ -91,7 +92,7 @@ function PlayerBlock() {
             >
               <svg className={styleBtn["player__btn-play-svg"]} alt="play">
                 <use
-                  href={`img/icon/sprite.svg#icon-${isPlay ? "pause" : "play"}`}
+                  href={`${sprite}#icon-${isPlay ? "pause" : "play"}`}
                 ></use>
               </svg>
             </div>

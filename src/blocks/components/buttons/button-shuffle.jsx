@@ -1,13 +1,13 @@
 import styles from "./buttons.module.scss";
 
+import {ReactComponent as Shuffle} from "../../../assets/img/icon/shuffle.svg";
+
 function ButtonShuffle() {
   return (
     <div
       className={` ${styles["player__btn-shuffle"]} ${styles["_btn-icon"]} `}
     >
-      <svg className={styles["player__btn-shuffle-svg"]} alt="shuffle">
-        <use href="img/icon/sprite.svg#icon-shuffle"></use>
-      </svg>
+      <Shuffle className={styles["player__btn-shuffle-svg"]} />
     </div>
   );
 }
