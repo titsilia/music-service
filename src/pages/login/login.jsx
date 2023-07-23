@@ -1,34 +1,39 @@
 import React from "react";
 
 import styles from "./login.module.css";
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 function Login() {
+  const navigate = useNavigate();
   const loginBtnClick = () => {
-    localStorage.setItem('login', 'test');
-  }
+    localStorage.setItem("login", "test");
+
+    navigate("/tracks");
+  };
+
+  const RegBtnClick = () => {
+    navigate("/registration");
+  };
   return (
     <div className={styles.container_login}>
       <div className={styles.login}>
         <img src="img/logo-black.png" alt="" />
-        <form className={styles.login__form}>
+        <div className={styles.login__form}>
           <input className={styles.login__form_input} placeholder="Логин" />
           <input className={styles.login__form_input} placeholder="Пароль" />
 
           <button
-            className={`${styles.login__form_button} ${styles.login__form_button_login}`}
+            onClick={loginBtnClick}
+            className={`${styles.login__form_button} ${styles.login__form_button_login} ${styles.login_link}`}
           >
-            <Link className={styles.login_link} to="/tracks" onClick={loginBtnClick}>
-              Войти
-            </Link>
+            Войти
           </button>
-        </form>
+        </div>
         <button
-          className={`${styles.login__form_button} ${styles.login__form_button_reg}`}
+          onClick={RegBtnClick}
+          className={`${styles.login__form_button} ${styles.reg_link} ${styles.login__form_button_reg}`}
         >
-          <Link className={styles.reg_link} to="/registration">
-            Зарегистрироваться
-          </Link>
+          Зарегистрироваться
         </button>
       </div>
     </div>

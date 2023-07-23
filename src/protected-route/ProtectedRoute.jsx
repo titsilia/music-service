@@ -6,4 +6,6 @@ export const ProtectedRoute = ({ redirectPart = '/' }) => {
     if (!login) {
         return <Navigate to={redirectPart} replace={true} />
     }
+
+    return <Outlet />
 }
