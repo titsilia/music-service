@@ -18,6 +18,7 @@ function ButtonDislike() {
       )}
     </div>
   );
+
 }
 
 export default ButtonDislike;

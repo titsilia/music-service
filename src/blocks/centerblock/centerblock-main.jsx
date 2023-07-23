@@ -164,6 +164,7 @@ function CenterBlock() {
           >
             АЛЬБОМ
           </div>
+
           <div className={`${styles.playlist_title__col} ${styles.col04} `}>
             {theme === "light" ? <WatchLight /> : <Watch />}
           </div>
