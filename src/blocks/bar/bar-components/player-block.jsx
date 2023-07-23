@@ -58,9 +58,11 @@ function PlayerBlock() {
   });
 
   useEffect(() => {
+    
     const audioTime = audio.current.duration;
-
+    
     if (isPlay) {
+
       window.play = setInterval(() => {
         console.log("au");
         const currentTime = audio.current.currentTime;
@@ -73,9 +75,10 @@ function PlayerBlock() {
           setPlay(false);
         }
       }, 10);
-    } else {
-      clearInterval(window.play);
     }
+    return () => {
+      clearInterval(window.play);
+    };
   });
 
   return (
