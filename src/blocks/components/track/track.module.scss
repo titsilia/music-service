@@ -11,7 +11,6 @@
     font-weight: 400;
     font-size: 16px;
     line-height: 24px;
-    color: #ffffff;
     text-align: left;
   }
 
@@ -25,7 +24,6 @@
     font-weight: 400;
     font-size: 16px;
     line-height: 24px;
-    color: #696969;
   }
 
   // track-time
@@ -34,7 +32,6 @@
     height: 12px;
     margin-right: 17px;
     fill: transparent;
-    stroke: #696969;
   }
 
   &__time-text {
@@ -43,7 +40,6 @@
     font-size: 16px;
     line-height: 24px;
     text-align: right;
-    color: #696969;
   }
 
   // track-title
@@ -53,7 +49,6 @@
     font-weight: 400;
     font-size: 16px;
     line-height: 24px;
-    color: #ffffff;
   }
 
   &__title-span {
@@ -61,24 +56,26 @@
     font-weight: 400;
     font-size: 16px;
     line-height: 24px;
-    color: #4e4e4e;
   }
 
-  // track-mage
+  // track-image
   &__title-image {
     width: 51px;
     height: 51px;
     padding: 16px;
-    background: #313131;
     display: flex;
     align-items: center;
     justify-content: center;
+    &_dark {
+      background: #313131;
+    }
+    &_light {
+      background: #F6F4F4;
+    }
   }
 
   &__title-svg {
     width: 18px;
     height: 17px;
-    fill: transparent;
-    stroke: #4e4e4e;
   }
 }

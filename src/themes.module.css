@@ -1,0 +1,70 @@
+.light__background {
+    background-color: #fff;
+}
+.light__nav_background {
+    background: #F6F5F3;;
+}
+
+.light__border_burger {
+    background: #000;;
+}
+
+.light__text {
+    color: #000;
+}
+.light__text::placeholder {
+    color: #000;
+}
+
+.light__text_tracks {
+    color: #B1B1B1;
+}
+.light__border {
+    border-bottom: 1px solid #D9D9D9;
+}
+
+.light__progress {
+    background-color: #D9D9D9;
+}
+
+/* 
+${theme === 'light' ? color.light__text : color.dark__text} 
+*/
+
+/* для тёмной темы */
+.dark__text {
+    color: #fff;
+}
+.dark__text::placeholder {
+    color: #fff;
+}
+.dark__background {
+    background-color: #fff;
+}
+.dark__border_burger {
+    background-color: #D3D3D3;
+}
+
+.dark__nav_background {
+    background: #1C1C1C;
+}
+.dark__main_background {
+    background-color: #181818;
+}
+
+.dark__search {
+    color: #fff;
+    border: 1px solid #fff;
+}
+
+.dark__text_tracks {
+    color: #4E4E4E;
+}
+
+.dark__border {
+    border-bottom: 1px solid #4e4e4e;
+}
+
+.dark__progress {
+    background-color: #2e2e2e;
+}

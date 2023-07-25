@@ -8,7 +8,6 @@
   font-weight: 400;
   font-size: 16px;
   line-height: 24px;
-  color: #ffffff;
   text-align: left;
 }
 .track__album {
@@ -19,14 +18,12 @@
   font-weight: 400;
   font-size: 16px;
   line-height: 24px;
-  color: #696969;
 }
 .track__time-svg {
   width: 14px;
   height: 12px;
   margin-right: 17px;
   fill: transparent;
-  stroke: #696969;
 }
 .track__time-text {
   font-style: normal;
@@ -34,34 +31,34 @@
   font-size: 16px;
   line-height: 24px;
   text-align: right;
-  color: #696969;
 }
 .track__title-link {
   font-style: normal;
   font-weight: 400;
   font-size: 16px;
   line-height: 24px;
-  color: #ffffff;
 }
 .track__title-span {
   font-style: normal;
   font-weight: 400;
   font-size: 16px;
   line-height: 24px;
-  color: #4e4e4e;
 }
 .track__title-image {
   width: 51px;
   height: 51px;
   padding: 16px;
-  background: #313131;
   display: flex;
   align-items: center;
   justify-content: center;
 }
+.track__title-image_dark {
+  background: #313131;
+}
+.track__title-image_light {
+  background: #F6F4F4;
+}
 .track__title-svg {
   width: 18px;
   height: 17px;
-  fill: transparent;
-  stroke: #4e4e4e;
 }/*# sourceMappingURL=track.module.css.map */

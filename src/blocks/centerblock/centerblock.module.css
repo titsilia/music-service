@@ -2,11 +2,11 @@
   width: 60%;
   flex-grow: 3;
   padding: 20px 40px 20px 111px;
+  height: 100vh;
 }
 
 .centerblock__search {
   width: 100%;
-  border-bottom: 1px solid #4E4E4E;
   margin-bottom: 51px;
   display: flex;
   flex-direction: row;
@@ -35,7 +35,6 @@
   width: 17px;
   height: 17px;
   margin-right: 5px;
-  stroke: #FFFFFF;
   fill: transparent;
 }
 .search__text {
@@ -47,11 +46,10 @@
   font-weight: 400;
   font-size: 16px;
   line-height: 24px;
-  color: #FFFFFF;
+  outline: none;
 }
 .search__text::-moz-placeholder {
   background-color: transparent;
-  color: #FFFFFF;
   font-style: normal;
   font-weight: 400;
   font-size: 16px;
@@ -59,11 +57,20 @@
 }
 .search__text::placeholder {
   background-color: transparent;
-  color: #FFFFFF;
   font-style: normal;
   font-weight: 400;
   font-size: 16px;
   line-height: 24px;
+}
+
+.light__search {
+  color: #000;
+  border: 1px solid #000;
+}
+
+.light__search:hover {
+  color: #580EA2;
+  border: 1px solid #580EA2;
 }
 
 .filter__title {
@@ -83,16 +90,23 @@
   font-weight: 400;
   font-size: 16px;
   line-height: 24px;
-  border: 1px solid #FFFFFF;
   border-radius: 60px;
   padding: 6px 20px;
 }
 .filter__button:not(:last-child) {
   margin-right: 10px;
 }
-.filter__btn_active {
+.filter__button:hover {
+  color: #d9b6ff;
+  border: 1px solid #d9b6ff;
+}
+.filter__button:active {
   border: 1px solid #AD61FF;
   color: #AD61FF;
+}
+.filter__btn_active {
+  border: 1px solid #ad61ff;
+  color: #ad61ff;
   cursor: pointer;
 }
 
@@ -115,14 +129,12 @@
   font-size: 14px;
   line-height: 24px;
   letter-spacing: 2px;
-  color: #696969;
   text-transform: uppercase;
 }
 .playlist_title__svg {
   width: 12px;
   height: 12px;
   fill: transparent;
-  stroke: #696969;
 }
 
 .col01 {

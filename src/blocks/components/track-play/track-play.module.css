@@ -1,11 +1,16 @@
 .track-play__image {
   width: 51px;
   height: 51px;
-  background-color: #313131;
   display: flex;
   align-items: center;
   justify-content: center;
   grid-area: image;
+}
+.track-play__image_dark {
+  background-color: #313131;
+}
+.track-play__image_light {
+  background-color: #F6F4F4;
 }
 .track-play__svg {
   width: 18px;
@@ -22,7 +27,6 @@
   font-weight: 400;
   font-size: 16px;
   line-height: 24px;
-  color: #FFFFFF;
   white-space: nowrap;
 }
 .track-play__album {
@@ -34,5 +38,4 @@
   font-weight: 400;
   font-size: 13px;
   line-height: 24px;
-  color: #FFFFFF;
 }/*# sourceMappingURL=track-play.module.css.map */

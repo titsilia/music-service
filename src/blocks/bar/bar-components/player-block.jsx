@@ -1,15 +1,15 @@
 import React from "react";
 
 import styles from "./player-block.module.scss";
-import sprite from "../../../assets/img/icon/sprite.svg";
-
 import styleBtn from "../../components/buttons/buttons.module.scss";
+import color from "../../../themes.module.css";
+
+import { useThemeContext } from "../../../context/theme";
 
 import SkelRenderBar from "./skel-render-bar";
 import TrackRender from "./track-render";
 
 import ButtonPrev from "../../components/buttons/button-prev";
-import ButtonPlay from "../../components/buttons/button-play";
 import ButtonNext from "../../components/buttons/button-next";
 import ButtonRepeat from "../../components/buttons/button-repeat";
 import ButtonShuffle from "../../components/buttons/button-shuffle";
@@ -19,9 +19,16 @@ import ButtonDislike from "../../components/buttons/button-dislike";
 import VolumeImage from "../../components/volume/volume-image";
 import VolumeProgress from "../../components/volume/volume-progress";
 
+import { ReactComponent as Play } from "../../../assets/img/icon/play.svg";
+import { ReactComponent as PlayLight } from "../../../assets/img/icon/light/play-light.svg";
+
+import { ReactComponent as Pause } from "../../../assets/img/icon/pause.svg";
+import { ReactComponent as PauseLight } from "../../../assets/img/icon/light/pause-light.svg";
+
 const { useState, useEffect, useRef } = React;
 
 function PlayerBlock() {
+  const { theme } = useThemeContext();
   const [isLoading, setIsLoading] = useState(true);
 
   const [isPlay, setPlay] = useState(false);
@@ -51,9 +58,11 @@ function PlayerBlock() {
   });
 
   useEffect(() => {
+    
     const audioTime = audio.current.duration;
-
+    
     if (isPlay) {
+
       window.play = setInterval(() => {
         console.log("au");
         const currentTime = audio.current.currentTime;
@@ -66,15 +75,19 @@ function PlayerBlock() {
           setPlay(false);
         }
       }, 10);
-    } else {
-      clearInterval(window.play);
     }
+    return () => {
+      clearInterval(window.play);
+    };
   });
 
-  console.log(1);
   return (
     <>
-      <div className={styles["bar__player-progress"]}>
+      <div
+        className={`${styles["bar__player-progress"]} ${
+          theme === "light" ? color.light__progress : color.dark__progress
+        } `}
+      >
         <div
           ref={progressLine}
           className={styles["bar__player-progress_procent"]}
@@ -90,11 +103,17 @@ function PlayerBlock() {
               onClick={playBtn}
               className={` ${styleBtn["player__btn-play"]} ${styleBtn["_btn"]} `}
             >
-              <svg className={styleBtn["player__btn-play-svg"]} alt="play">
-                <use
-                  href={`${sprite}#icon-${isPlay ? "pause" : "play"}`}
-                ></use>
-              </svg>
+              {theme === "light" ? (
+                isPlay ? (
+                  <PauseLight />
+                ) : (
+                  <PlayLight />
+                )
+              ) : isPlay ? (
+                <Pause />
+              ) : (
+                <Play />
+              )}
             </div>
 
             <ButtonNext />
