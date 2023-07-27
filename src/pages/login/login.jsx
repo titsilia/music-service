@@ -2,14 +2,28 @@ import React from "react";
 
 import styles from "./login.module.css";
 import { useNavigate } from "react-router-dom";
+import { useLogInMutation } from "../../redux/fetch";
 
 function Login() {
   const navigate = useNavigate();
-  const loginBtnClick = () => {
-    localStorage.setItem("login", "test");
 
-    navigate("/tracks");
+  const [sendFormAuth, { isSuccess, isError, data }] = useLogInMutation();
+
+  const userAuth = async (event) => {
+    event.preventDefault();
+    const form = document.querySelector(`.${styles.login__form}`);
+    const formData = new FormData(form);
+    await sendFormAuth(formData);
   };
+  if (isSuccess) {
+    localStorage.setItem("token", data.access);
+    localStorage.setItem("token-refresh", data.refresh);
+    console.log(data);
+    navigate("/tracks");
+  }
+  if (isError) {
+    alert("тeбe сюда не нада");
+  }
 
   const RegBtnClick = () => {
     navigate("/registration");
@@ -18,17 +32,26 @@ function Login() {
     <div className={styles.container_login}>
       <div className={styles.login}>
         <img src="img/logo-black.png" alt="" />
-        <div className={styles.login__form}>
-          <input className={styles.login__form_input} placeholder="Логин" />
-          <input className={styles.login__form_input} placeholder="Пароль" />
+        <form className={styles.login__form} onSubmit={userAuth}>
+          <input
+            className={styles.login__form_input}
+            placeholder="Email"
+            name="email"
+            type="email"
+          />
+          <input
+            className={styles.login__form_input}
+            placeholder="Пароль"
+            type="password"
+            name="password"
+          />
 
           <button
-            onClick={loginBtnClick}
             className={`${styles.login__form_button} ${styles.login__form_button_login} ${styles.login_link}`}
           >
             Войти
           </button>
-        </div>
+        </form>
         <button
           onClick={RegBtnClick}
           className={`${styles.login__form_button} ${styles.reg_link} ${styles.login__form_button_reg}`}

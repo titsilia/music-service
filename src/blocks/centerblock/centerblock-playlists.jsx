@@ -1,5 +1,10 @@
 import React from "react";
 
+import {
+  useGetAllFavoriteQuery,
+  useRefreshTokenMutation,
+} from "../../redux/fetch";
+
 import styles from "./centerblock.module.css";
 import color from "../../themes.module.css";
 
@@ -19,19 +24,15 @@ import { ReactComponent as WatchLight } from "../../assets/img/icon/light/watch-
 const { useState, useEffect } = React;
 
 function CenterBlockPlaylists({ h2 }) {
-  const { theme } = useThemeContext();
 
-  const [isLoading, setIsLoading] = useState(true);
 
-  useEffect(() => {
-    const timerId = setTimeout(() => {
-      setIsLoading(false);
-    }, 5000);
-
-    return () => {
-      clearTimeout(timerId);
-    };
+  const token = localStorage.getItem("token");
+  const { data, isLoading } = useGetAllFavoriteQuery({
+    Authorization: `Bearer ${token}`,
   });
+  console.log(data);
+
+  const { theme } = useThemeContext();
 
   return (
     <div
@@ -99,52 +100,41 @@ function CenterBlockPlaylists({ h2 }) {
             АЛЬБОМ
           </div>
           <div className={`${styles.playlist_title__col} ${styles.col04}`}>
-          {theme === "light" ? <WatchLight /> : <Watch />}
+            {theme === "light" ? <WatchLight /> : <Watch />}
           </div>
         </div>
 
         <div className={`${styles.content__playlist} ${styles.playlist}`}>
-          {isLoading ? (
+          {isLoading && !data ? (
             <>
               <SkelRenderCenterblock />
               <SkelRenderCenterblock />
               <SkelRenderCenterblock />
               <SkelRenderCenterblock />
               <SkelRenderCenterblock />
+              <SkelRenderCenterblock />
+              <SkelRenderCenterblock />
+              <SkelRenderCenterblock />
+              <SkelRenderCenterblock />
+              <SkelRenderCenterblock />
+              <SkelRenderCenterblock />
             </>
+          ) : data ? (
+            data.map((track) => (
+              <PlaylistItem
+                key={track.id}
+                title={track.name}
+                author={track.author}
+                album={track.album}
+                time={`${(+track.duration_in_seconds / 60) >> 0}:${
+                  +track.duration_in_seconds % 60 < 10
+                    ? `0${+track.duration_in_seconds % 60}`
+                    : +track.duration_in_seconds % 60
+                }`}
+              />
+            ))
           ) : (
-            <>
-              <PlaylistItem
-                title="Guilt"
-                author="Nero"
-                album="Welcome Reality"
-                time="4:44"
-              />
-              <PlaylistItem
-                title="Elektro"
-                author="Dynoro, Outwork, Mr. Gee"
-                album="Elektro"
-                time="2:22"
-              />
-              <PlaylistItem
-                title="I’m Fire"
-                author="Ali Bakgor"
-                album="I’m Fire"
-                time="2:22"
-              />
-              <PlaylistItem
-                title="Non Stop"
-                author="Стоункат, Psychopath"
-                album="Non Stop"
-                time="4:12"
-              />
-              <PlaylistItem
-                title="Run Run"
-                author="Jaded, Will Clarke, AR/CO"
-                album="Run Run"
-                time="2:54"
-              />
-            </>
+            <></>
           )}
         </div>
       </div>

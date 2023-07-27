@@ -22,27 +22,37 @@ function NavMenu() {
     <div className={`${styles.nav__menu} ${styles.menu}`}>
       <ul className={styles.menu__list}>
         <ul className={styles.menu__item}>
-          <Link to="/tracks" className={`${styles.menu__link} ${theme === 'light' ? color.light__text : color.dark__text}`}>
+          <Link
+            to="/tracks"
+            className={`${styles.menu__link} ${
+              theme === "light" ? color.light__text : color.dark__text
+            }`}
+          >
             Главное
           </Link>
         </ul>
         <ul className={styles.menu__item}>
-          <Link to="/tracks" className={`${styles.menu__link} ${theme === 'light' ? color.light__text : color.dark__text}`}>
-            Мой плейлист
+          <Link
+            to="/category/favorite"
+            className={`${styles.menu__link} ${
+              theme === "light" ? color.light__text : color.dark__text
+            }`}
+          >
+            Моё избранное
           </Link>
         </ul>
         <ul className={styles.menu__item}>
-          <Link to="/" className={`${styles.menu__link} ${theme === 'light' ? color.light__text : color.dark__text}`} onClick={loginClearBtn}>
+          <Link
+            to="/"
+            className={`${styles.menu__link} ${
+              theme === "light" ? color.light__text : color.dark__text
+            }`}
+            onClick={loginClearBtn}
+          >
             Выйти
           </Link>
         </ul>
-        <div onClick={toggleTheme}>
-          {theme === "dark" ? (
-            <Moon />
-          ) : (
-            <Sun />
-          )}
-        </div>
+        <div onClick={toggleTheme}>{theme === "dark" ? <Moon /> : <Sun />}</div>
       </ul>
     </div>
   );
