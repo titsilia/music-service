@@ -1,11 +1,11 @@
 import { Navigate, Outlet } from "react-router-dom";
 
-export const ProtectedRoute = ({ redirectPart = '/' }) => {
-    const login = localStorage.getItem('login');
+export const ProtectedRoute = ({ redirectPart = "/" }) => {
+  const token = localStorage.getItem("token");
 
-    if (!login) {
-        return <Navigate to={redirectPart} replace={true} />
-    }
+  if (!token) {
+    return <Navigate to={redirectPart} replace={true} />;
+  }
 
-    return <Outlet />
-}
+  return <Outlet />;
+};

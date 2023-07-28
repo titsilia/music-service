@@ -1,14 +1,11 @@
 import React from "react";
 
-import { useGetSelectionQuery } from "../../redux/fetch";
-import { useDispatch } from "react-redux";
-import { setTrack } from "../../redux/action-creators";
+import { useGetAllFavoriteQuery } from "../../redux/fetch";
 
 import styles from "./centerblock.module.css";
 import color from "../../themes.module.css";
 
 import { useThemeContext } from "../../context/theme";
-import { useParams } from "react-router-dom";
 
 import PlaylistItem from "./centerblock-components/playlist-item";
 import SkelRenderCenterblock from "./centerblock-components/skel-render-centerblock";
@@ -21,12 +18,9 @@ import { ReactComponent as WatchLight } from "../../assets/img/icon/light/watch-
 
 const { useState, useEffect } = React;
 
-function CenterBlockPlaylists({ h2 }) {
-
-  const { id } = useParams();
-  console.log(id);
-  const { data, isLoading } = useGetSelectionQuery(id);
-
+function CenterBlockFavorite({ h2 }) {
+  const token = localStorage.getItem("token");
+  const { data, isLoading } = useGetAllFavoriteQuery(token);
   console.log(data);
 
   const { theme } = useThemeContext();
@@ -116,8 +110,8 @@ function CenterBlockPlaylists({ h2 }) {
               <SkelRenderCenterblock />
               <SkelRenderCenterblock />
             </>
-          ) : (
-            data.items.map((track) => (
+          ) : data ? (
+            data.map((track) => (
               <PlaylistItem
                 key={track.id}
                 title={track.name}
@@ -131,6 +125,8 @@ function CenterBlockPlaylists({ h2 }) {
                 }`}
               />
             ))
+          ) : (
+            <></>
           )}
         </div>
       </div>
@@ -138,4 +134,4 @@ function CenterBlockPlaylists({ h2 }) {
   );
 }
 
-export default CenterBlockPlaylists;
+export default CenterBlockFavorite;

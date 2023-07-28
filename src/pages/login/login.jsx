@@ -16,6 +16,7 @@ function Login() {
     await sendFormAuth(formData);
   };
   if (isSuccess) {
+    document.cookie = `token-refresh=${data.refresh}`;
     localStorage.setItem("token", data.access);
     localStorage.setItem("token-refresh", data.refresh);
     console.log(data);

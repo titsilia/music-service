@@ -5,6 +5,7 @@ import styleBtn from "../../components/buttons/buttons.module.scss";
 import color from "../../../themes.module.css";
 
 import { useThemeContext } from "../../../context/theme";
+import { useSelector } from "react-redux";
 
 import SkelRenderBar from "./skel-render-bar";
 import TrackRender from "./track-render";
@@ -28,6 +29,9 @@ import { ReactComponent as PauseLight } from "../../../assets/img/icon/light/pau
 const { useState, useEffect, useRef } = React;
 
 function PlayerBlock() {
+  const getTrack = useSelector((store) => store.track.trackData.urlTrack);
+  console.log(getTrack);
+
   const { theme } = useThemeContext();
   const [isLoading, setIsLoading] = useState(true);
 
@@ -50,7 +54,7 @@ function PlayerBlock() {
     audio.current.volume = 0.1;
     const timerId = setTimeout(() => {
       setIsLoading(false);
-    }, 5000);
+    }, 500);
 
     return () => {
       clearTimeout(timerId);
@@ -58,11 +62,9 @@ function PlayerBlock() {
   });
 
   useEffect(() => {
-    
     const audioTime = audio.current.duration;
-    
-    if (isPlay) {
 
+    if (isPlay) {
       window.play = setInterval(() => {
         console.log("au");
         const currentTime = audio.current.currentTime;
@@ -149,7 +151,7 @@ function PlayerBlock() {
         </div>
       </div>
       <figure>
-        <audio ref={audio} src="music/Bobby_Marleni_-_Dropin.mp3"></audio>
+        <audio ref={audio} src={getTrack}></audio>
       </figure>
     </>
   );

@@ -36,11 +36,16 @@
   font-size: 20px;
   line-height: 24px;
   font-feature-settings: "pnum" on, "lnum" on;
-  color: #FFFFFF;
+  color: #ffffff;
+  cursor: pointer;
 }
 .filter__dropdown_text:hover {
   text-decoration-line: underline;
-  color: #B672FF;
+  color: #b672ff;
+}
+.filter__dropdown_radio {
+  display: flex;
+  gap: 10px;
 }
 
 .filter__dropdown::-webkit-scrollbar {
@@ -49,11 +54,11 @@
 }
 
 .filter__dropdown::-webkit-scrollbar-track {
-  background: #4B4949; /* цвет дорожки */
+  background: #4b4949; /* цвет дорожки */
   border-radius: 10px; /* скругление дорожки */
 }
 
 .filter__dropdown::-webkit-scrollbar-thumb {
-  background: #FFFFFF; /* цвет плашки */
+  background: #ffffff; /* цвет плашки */
   border-radius: 10px; /* закругления плашки */
 }/*# sourceMappingURL=visible.module.css.map */

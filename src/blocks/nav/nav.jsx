@@ -14,16 +14,22 @@ const { useState } = React;
 
 function Nav() {
   console.log(localStorage.getItem("token"));
-  const [newToken, { isLoading, is }] = useRefreshTokenMutation();
+
+
+  const refreshToken = localStorage.getItem("token-refresh");
+
+  // const [newToken] = useRefreshTokenMutation();
+
+  // console.log(newToken(refreshToken));
 
   // newToken({ refresh: localStorage.getItem("token-refresh") });
 
   // if (!isLoading) {
-  //   localStorage.setItem("token", newToken.access);
+  //   localStorage.setItem("token-1", newToken.access);
   //   console.log(newToken);
   // }
 
-  // console.log(localStorage.getItem("token"));
+  // console.log(localStorage.getItem("token-1"));
 
   const [visible, setVisible] = useState(false);
 

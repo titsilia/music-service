@@ -14,10 +14,29 @@ export const musicApi = createApi({
         url: "/track/all/",
       }),
     }),
+    getSelection: builder.query({
+      query: (id) => ({
+        url: `/selection/${id}`,
+      }),
+    }),
     getAllFavorite: builder.query({
-      query: (headers) => ({
+      query: (token) => ({
         url: "/track/favorite/all/",
-        headers,
+        headers: { authorization: `Bearer ${token}` },
+      }),
+    }),
+    addFavorite: builder.mutation({
+      query: ({ id, token }) => ({
+        url: `/track/${id}/favorite/`,
+        headers: { authorization: `Bearer ${token}` },
+        method: "POST",
+      }),
+    }),
+    deleteFavorite: builder.mutation({
+      query: ({ id, token }) => ({
+        url: `/track/${id}/favorite/`,
+        headers: { authorization: `Bearer ${token}` },
+        method: "DELETE",
       }),
     }),
   }),
@@ -47,14 +66,21 @@ export const userApi = createApi({
       }),
     }),
     refreshToken: builder.mutation({
-        query: (body) => ({
-          url: "/token/refresh",
-          method: "POST",
-          body,
-        }),
+      query: (refresh) => ({
+        url: "/token/refresh",
+        method: "POST",
+        refresh,
       }),
+    }),
   }),
 });
 
-export const { useSignUpMutation, useLogInMutation, useRefreshTokenMutation } = userApi;
-export const { useGetAllTracksQuery, useGetAllFavoriteQuery } = musicApi;
+export const { useSignUpMutation, useLogInMutation, useRefreshTokenMutation } =
+  userApi;
+export const {
+  useGetAllTracksQuery,
+  useGetAllFavoriteQuery,
+  useGetSelectionQuery,
+  useAddFavoriteMutation,
+  useDeleteFavoriteMutation,
+} = musicApi;
