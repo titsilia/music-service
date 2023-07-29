@@ -66,12 +66,12 @@
 }
 
 .light__search {
-    color: #000;
-    border: 1px solid #000;
+  color: #000;
+  border: 1px solid #000;
 }
 .light__search:hover {
-    color: #580EA2;
-    border: 1px solid #580EA2;
+  color: #580ea2;
+  border: 1px solid #580ea2;
 }
 
 .filter {
@@ -106,8 +106,8 @@
       border: 1px solid #d9b6ff;
     }
     &:active {
-        border: 1px solid #AD61FF;
-        color: #AD61FF;
+      border: 1px solid #ad61ff;
+      color: #ad61ff;
     }
   }
 
@@ -117,8 +117,6 @@
     cursor: pointer;
   }
 }
-
-
 
 .content {
   &__title {
@@ -133,6 +131,12 @@
     display: flex;
     flex-direction: column;
     overflow-y: auto;
+    max-height: 100vh;
+    &::-webkit-scrollbar {
+      width: 0;
+      height: 0;
+      display: none;
+    }
   }
 }
 

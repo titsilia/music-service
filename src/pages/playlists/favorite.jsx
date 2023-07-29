@@ -6,15 +6,14 @@ import Footer from "../../blocks/footer";
 import styles from "../tracks(main)/main.module.css";
 
 import Nav from "../../blocks/nav/nav";
-import CenterBlockPlaylists from "../../blocks/centerblock/centerblock-playlists";
+import CenterBlockFavorite from "../../blocks/centerblock/centerblock-favorite";
 import SlideBarPlaylists from "../../blocks/sidebar/sidebar-playlists";
 
-
-function Hits() {
+function Favorite() {
   return (
     <div className={styles.main}>
       <Nav />
-      <CenterBlockPlaylists h2="100 танцевальных хитов"/>
+      <CenterBlockFavorite h2="Моё избранное" />
       <SlideBarPlaylists />
       <Bar />
       <Footer />
@@ -22,4 +21,4 @@ function Hits() {
   );
 }
 
-export default Hits;
+export default Favorite;

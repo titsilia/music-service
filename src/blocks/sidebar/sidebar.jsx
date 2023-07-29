@@ -27,7 +27,13 @@ function SlideBar() {
   });
 
   return (
-    <div className={`${styles.main__sidebar} ${styles.sidebar} ${theme === 'light' ? color.light__background : color.dark__main_background} `}>
+    <div
+      className={`${styles.main__sidebar} ${styles.sidebar} ${
+        theme === "light"
+          ? color.light__background
+          : color.dark__main_background
+      } `}
+    >
       <SidebarPersonal name="Sergey.Ivanov" />
 
       <div className={styles.sidebar__block}>
@@ -40,9 +46,9 @@ function SlideBar() {
             </>
           ) : (
             <>
-              <SidebarItem img="img/playlist01.png" link="/category/daily"/>
-              <SidebarItem img="img/playlist02.png" link="/category/hits" />
-              <SidebarItem img="img/playlist03.png" link="/category/indie"/>
+              <SidebarItem img="img/playlist01.png" link="/category/1" />
+              <SidebarItem img="img/playlist02.png" link="/category/2" />
+              <SidebarItem img="img/playlist03.png" link="/category/3" />
             </>
           )}
         </div>

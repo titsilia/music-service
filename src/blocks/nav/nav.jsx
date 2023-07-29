@@ -2,6 +2,7 @@ import React from "react";
 import NavMenu from "./NavMenu/nav-menu";
 
 import { useThemeContext } from "../../context/theme";
+import { useRefreshTokenMutation } from "../../redux/fetch";
 
 import logo from "../../assets/img/logo.png";
 import logoLight from "../../assets/img/logo-light.png";
@@ -12,13 +13,29 @@ import color from "../../themes.module.css";
 const { useState } = React;
 
 function Nav() {
+  console.log(localStorage.getItem("token"));
+
+
+  const refreshToken = localStorage.getItem("token-refresh");
+
+  // const [newToken] = useRefreshTokenMutation();
+
+  // console.log(newToken(refreshToken));
+
+  // newToken({ refresh: localStorage.getItem("token-refresh") });
+
+  // if (!isLoading) {
+  //   localStorage.setItem("token-1", newToken.access);
+  //   console.log(newToken);
+  // }
+
+  // console.log(localStorage.getItem("token-1"));
+
   const [visible, setVisible] = useState(false);
 
   const toggleVisibility = () => setVisible(!visible);
 
   const { theme } = useThemeContext();
-
-  console.log(theme);
 
   return (
     <nav

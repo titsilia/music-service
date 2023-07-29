@@ -69,8 +69,8 @@
 }
 
 .light__search:hover {
-  color: #580EA2;
-  border: 1px solid #580EA2;
+  color: #580ea2;
+  border: 1px solid #580ea2;
 }
 
 .filter__title {
@@ -101,8 +101,8 @@
   border: 1px solid #d9b6ff;
 }
 .filter__button:active {
-  border: 1px solid #AD61FF;
-  color: #AD61FF;
+  border: 1px solid #ad61ff;
+  color: #ad61ff;
 }
 .filter__btn_active {
   border: 1px solid #ad61ff;
@@ -121,6 +121,12 @@
   display: flex;
   flex-direction: column;
   overflow-y: auto;
+  max-height: 100vh;
+}
+.content__playlist::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+  display: none;
 }
 
 .playlist_title__col {

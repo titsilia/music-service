@@ -1,5 +1,11 @@
 import React from "react";
 
+import {
+  useGetAllTracksQuery,
+  useGetAllFavoriteQuery,
+} from "../../redux/fetch";
+import { useSelector } from "react-redux";
+
 import styles from "./centerblock.module.css";
 import color from "../../themes.module.css";
 
@@ -21,6 +27,10 @@ import { ReactComponent as WatchLight } from "../../assets/img/icon/light/watch-
 const { useState, useEffect } = React;
 
 function CenterBlock() {
+  let response = useGetAllTracksQuery();
+
+  const token = localStorage.getItem("token");
+
   const { theme } = useThemeContext();
 
   const [visibleFilter, setVisibleFilter] = useState(null);
@@ -28,17 +38,46 @@ function CenterBlock() {
   const toggleVisibilityFilter = (filter) =>
     setVisibleFilter(visibleFilter === filter ? null : filter);
 
-  const [isLoading, setIsLoading] = useState(true);
+  const authorFilter = useSelector(
+    (store) => store.filters.activeFilters.author
+  );
 
-  useEffect(() => {
-    const timerId = setTimeout(() => {
-      setIsLoading(false);
-    }, 3000);
+  const genreFilter = useSelector((store) => store.filters.activeFilters.genre);
+  const yearFilter = useSelector((store) => store.filters.activeFilters.year);
 
-    return () => {
-      clearTimeout(timerId);
-    };
-  });
+  switch (yearFilter) {
+    case "new":
+      response.data = response.data.filter(
+        (year) => year.release_date !== null
+      );
+      response.data = response.data.toSorted((a, b) =>
+        +a["release_date"].split("-")[0] > +b["release_date"].split("-")[0]
+          ? -1
+          : 1
+      );
+
+      break;
+    case "old":
+      response.data = response.data.filter(
+        (year) => year.release_date !== null
+      );
+      response.data = response.data.toSorted((a, b) =>
+        +a["release_date"].split("-")[0] < +b["release_date"].split("-")[0]
+          ? -1
+          : 1
+      );
+    default:
+      break;
+  }
+  if (!response.data === {} || !response.isLoading) {
+    window.allTracks = response.data;
+
+    response = response.data.filter((track) =>
+      authorFilter !== null && genreFilter !== null
+        ? track.author === authorFilter && track.genre === genreFilter
+        : track
+    );
+  }
 
   return (
     <div
@@ -171,7 +210,7 @@ function CenterBlock() {
         </div>
 
         <div className={`${styles.content__playlist} ${styles.playlist}`}>
-          {isLoading ? (
+          {response.isLoading && !response.data ? (
             <>
               <SkelRenderCenterblock />
               <SkelRenderCenterblock />
@@ -186,74 +225,30 @@ function CenterBlock() {
               <SkelRenderCenterblock />
             </>
           ) : (
-            <>
-              <PlaylistItem
-                title="Guilt"
-                author="Nero"
-                album="Welcome Reality"
-                time="4:44"
-              />
-              <PlaylistItem
-                title="Elektro"
-                author="Dynoro, Outwork, Mr. Gee"
-                album="Elektro"
-                time="2:22"
-              />
-              <PlaylistItem
-                title="I’m Fire"
-                author="Ali Bakgor"
-                album="I’m Fire"
-                time="2:22"
-              />
-              <PlaylistItem
-                title="Non Stop"
-                author="Стоункат, Psychopath"
-                album="Non Stop"
-                time="4:12"
-              />
-              <PlaylistItem
-                title="Run Run"
-                author="Jaded, Will Clarke, AR/CO"
-                album="Run Run"
-                time="2:54"
-              />
-              <PlaylistItem
-                title="Eyes on Fire"
-                author="Blue Foundation, Zeds Dead"
-                album="Eyes on Fire"
-                time="5:20"
-              />
-              <PlaylistItem
-                title="Mucho Bien"
-                author="HYBIT, Mr. Black, Offer Nissim, Hi Profile"
-                album="Mucho Bien"
-                time="3:41"
-              />
-              <PlaylistItem
-                title="Knives n Cherries"
-                author="minthaze"
-                album="Captivating"
-                time="1:48"
-              />
-              <PlaylistItem
-                title="How Deep Is Your Love"
-                author="Calvin Harris, Disciples"
-                album="How Deep Is Your Love"
-                time="3:32"
-              />
-              <PlaylistItem
-                title="Morena"
-                author="Tom Boxer"
-                album="Soundz Made in Romania"
-                time="3:36"
-              />
-              <PlaylistItem
-                title="Guilt"
-                author="Dynoro"
-                album="Welcome"
-                time="0"
-              />
-            </>
+            response.map((track) => {
+              if (track.author !== authorFilter && authorFilter !== null) {
+                return <></>;
+              }
+              if (track.genre !== genreFilter && genreFilter !== null) {
+                return <></>;
+              }
+
+              return (
+                <PlaylistItem
+                  id={track.id}
+                  key={track.id}
+                  title={track.name}
+                  href={track.track_file}
+                  author={track.author}
+                  album={track.album}
+                  time={`${(+track.duration_in_seconds / 60) >> 0}:${
+                    +track.duration_in_seconds % 60 < 10
+                      ? `0${+track.duration_in_seconds % 60}`
+                      : +track.duration_in_seconds % 60
+                  }`}
+                />
+              );
+            })
           )}
         </div>
       </div>

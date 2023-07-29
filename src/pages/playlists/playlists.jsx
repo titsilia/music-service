@@ -1,20 +1,35 @@
-import Daily from "./daily";
-import Hits from "./hits";
-import Indie from "./indie";
-
+import React from "react";
 import { useParams } from "react-router-dom";
 
-const urlContent = [
-  { idName: "daily", component: <Daily /> },
-  { idName: "hits", component: <Hits /> },
-  { idName: "indie", component: <Indie /> },
-];
+import Bar from "../../blocks/bar/bar";
+import Footer from "../../blocks/footer";
 
-function Playlists() {
+import styles from "../tracks(main)/main.module.css";
+
+import Nav from "../../blocks/nav/nav";
+import CenterBlockPlaylists from "../../blocks/centerblock/centerblock-playlists";
+import SlideBarPlaylists from "../../blocks/sidebar/sidebar-playlists";
+
+function Daily() {
   const { id } = useParams();
 
-  const result = urlContent.find((item) => item.idName === id);
-
-  return <div>{result.component}</div>;
+  return (
+    <div className={styles.main}>
+      <Nav />
+      <CenterBlockPlaylists
+        h2={
+          id === "1"
+            ? "Плейлист дня"
+            : id === "2"
+            ? "Инди заряд"
+            : "100 танцевальных хитов"
+        }
+      />
+      <SlideBarPlaylists />
+      <Bar />
+      <Footer />
+    </div>
+  );
 }
-export default Playlists;
+
+export default Daily;

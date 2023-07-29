@@ -1,61 +1,64 @@
 .filter {
-
-    &__dropdown {
-        overflow-y: scroll;
-        overflow-x: hidden;
-        display: flex;
-        flex-direction: column;
-        width: 180px;
-        max-height: 237px;
-        background: #313131;
-        margin: 0 auto;
-        margin: 34px;
-        gap: 28px;
-        &_ad {
-            width: 248px;
-            max-height: 305px;
-            background: #313131;
-            border-radius: 12px;
-        }
-        &_author {
-            position: absolute;
-            left: 445px;
-            top: 290px;
-        }
-        &_year {
-            position: absolute;
-            left: 596px;
-            top: 290px;
-        }
-        &_genre {
-            position: absolute;
-            left: 741px;
-            top: 290px;
-        }
-        &_text {
-            font-size: 20px;
-            line-height: 24px;
-            font-feature-settings: 'pnum' on, 'lnum' on;
-            color: #FFFFFF;
-            
-            &:hover {
-                text-decoration-line: underline;
-                color: #B672FF;
-            }
-        }
+  &__dropdown {
+    overflow-y: scroll;
+    overflow-x: hidden;
+    display: flex;
+    flex-direction: column;
+    width: 180px;
+    max-height: 237px;
+    background: #313131;
+    margin: 0 auto;
+    margin: 34px;
+    gap: 28px;
+    &_ad {
+      width: 248px;
+      max-height: 305px;
+      background: #313131;
+      border-radius: 12px;
     }
+    &_author {
+      position: absolute;
+      left: 445px;
+      top: 290px;
+    }
+    &_year {
+      position: absolute;
+      left: 596px;
+      top: 290px;
+    }
+    &_genre {
+      position: absolute;
+      left: 741px;
+      top: 290px;
+    }
+    &_text {
+      font-size: 20px;
+      line-height: 24px;
+      font-feature-settings: "pnum" on, "lnum" on;
+      color: #ffffff;
+      cursor: pointer;
+      &:hover {
+        text-decoration-line: underline;
+        color: #b672ff;
+      }
+    }
+    &_radio {
+        display: flex;
+        gap: 10px;
+    }
+  }
 }
 
 .filter__dropdown::-webkit-scrollbar {
-    width: 4px;            /* ширина scrollbar */
-    height: 237px;
+  width: 4px; /* ширина scrollbar */
+  height: 237px;
 }
 .filter__dropdown::-webkit-scrollbar-track {
-    background: #4B4949; /* цвет дорожки */
-    border-radius: 10px;    /* скругление дорожки */ 
+  background: #4b4949; /* цвет дорожки */
+  border-radius: 10px; /* скругление дорожки */
 }
 .filter__dropdown::-webkit-scrollbar-thumb {
-    background: #FFFFFF;    /* цвет плашки */
-    border-radius: 10px;       /* закругления плашки */
-    // border: 3px solid orange;  /* padding вокруг плашки */
+  background: #ffffff; /* цвет плашки */
+  border-radius: 10px; /* закругления плашки */
+  // border: 3px solid orange;  /* padding вокруг плашки */
 }

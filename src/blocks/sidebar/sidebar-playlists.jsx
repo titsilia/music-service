@@ -1,7 +1,7 @@
 import React from "react";
 
 import styles from "./sidebar.module.css";
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 import color from "../../themes.module.css";
 
@@ -12,6 +12,14 @@ import { ReactComponent as ExitLight } from "../../assets/img/icon/light/exit-li
 
 function SlideBarPlaylists() {
   const { theme } = useThemeContext();
+
+  const navigate = useNavigate();
+
+  const exitClick = () => {
+    localStorage.removeItem("token");
+    navigate("/");
+  };
+
   return (
     <div
       className={`${styles.playlists__sidebar} ${styles.sidebar} ${
@@ -20,13 +28,13 @@ function SlideBarPlaylists() {
           : color.dark__main_background
       }`}
     >
-      <Link to="/">
+      <div onClick={exitClick}>
         {theme === "light" ? (
           <ExitLight className={styles.playlist__sidebar_exit} />
         ) : (
           <Exit className={styles.playlist__sidebar_exit} />
         )}
-      </Link>
+      </div>
     </div>
   );
 }
