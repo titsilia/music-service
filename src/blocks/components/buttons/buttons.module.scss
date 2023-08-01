@@ -1,30 +1,29 @@
 .track-play {
-  &__like,
-  &__dislike {
-    padding: 5px;
-  }
-
-  // buttons-dislike
-  &__dislike {
-    margin-left: 28.5px;
-  }
-
-  &__dislike-svg {
-    width: 14.34px;
-    height: 13px;
-    fill: transparent;
-    &:hover * {
-      stroke: #ACACAC;
-    }
-  }
-
-  // button-like
+  // track-like/dislike
   &__like-svg {
     width: 14px;
     height: 12px;
     fill: transparent;
+    cursor: pointer;
     &:hover * {
-      stroke: #ACACAC;
+      stroke: #acacac;
+    }
+    &:active * {
+      fill: #696969;
+      stroke: #ffffff;
+    }
+  }
+  &__like-svg_light {
+    width: 14px;
+    height: 12px;
+    fill: transparent;
+    cursor: pointer;
+    &:hover * {
+      stroke: #707070;
+    }
+    &:active * {
+      fill: #ad61ff;
+      stroke: #000000;
     }
   }
 }
@@ -40,6 +39,26 @@
     align-items: center;
   }
 
+  &__controls-btn {
+    &:hover * {
+      fill: #696969;
+    }
+    &:active * {
+      fill: #d9d9d9;
+    }
+  }
+
+  &__controls-btn_light {
+    &:hover * {
+      fill: #707070;
+      stroke: #707070;
+    }
+    &:active * {
+      fill: #b1b1b1;
+      stroke: #b1b1b1;
+    }
+  }
+
   // button-prev
   &__btn-prev {
     margin-right: 23px;
@@ -48,9 +67,6 @@
   &__btn-prev-svg {
     width: 15px;
     height: 14px;
-    &:hover * {
-      fill: #ACACAC;
-    }
   }
 
   // button-play
@@ -61,9 +77,6 @@
   &__btn-play-svg {
     width: 22px;
     height: 20px;
-    &:hover * {
-      fill: #696969;
-    }
   }
 
   // button-next
@@ -75,9 +88,6 @@
     width: 15px;
     height: 14px;
     fill: inherit;
-    &:hover * {
-      fill: #696969;
-    }
   }
 
   // button-repeat
@@ -90,7 +100,27 @@
     height: 12px;
     fill: transparent;
     &:hover * {
-      fill: #ACACAC;
+      fill: #acacac;
+    }
+    &:active * {
+      fill: #ffffff;
+    }
+    &_active * {
+      fill: #ffffff;
+    }
+  }
+  &__btn-repeat-svg_light {
+    width: 18px;
+    height: 12px;
+    fill: transparent;
+    &:hover * {
+      fill: #707070;
+    }
+    &:active * {
+      fill: #000000;
+    }
+    &_active * {
+      fill: #000000;
     }
   }
 
@@ -105,7 +135,27 @@
     height: 12px;
     fill: transparent;
     &:hover * {
-      fill: #ACACAC;
+      fill: #acacac;
+    }
+    &:active * {
+      fill: #ffffff;
+    }
+    &_active * {
+      fill: #ffffff;
+    }
+  }
+  &__btn-shuffle-svg_light {
+    width: 19px;
+    height: 12px;
+    fill: transparent;
+    &:hover * {
+      fill: #707070;
+    }
+    &:active * {
+      fill: #000000;
+    }
+    &_active * {
+      fill: #000000;
     }
   }
 }

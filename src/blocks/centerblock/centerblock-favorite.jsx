@@ -113,6 +113,7 @@ function CenterBlockFavorite({ h2 }) {
           ) : data ? (
             data.map((track) => (
               <PlaylistItem
+                id={track.id}
                 key={track.id}
                 title={track.name}
                 href={track.track_file}

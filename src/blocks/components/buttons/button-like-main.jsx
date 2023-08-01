@@ -1,4 +1,4 @@
-import styles from "../../centerblock/centerblock-components/playlist-item.module.scss";
+import styles from "./buttons.module.scss";
 
 import { useThemeContext } from "../../../context/theme";
 
@@ -8,13 +8,13 @@ import { ReactComponent as LikeLight } from "../../../assets/img/icon/light/like
 function ButtonLikeMain() {
   const { theme } = useThemeContext();
   return (
-    <div>
+    <>
       {theme === "light" ? (
-        <LikeLight className={styles["track__time-svg"]} />
+        <LikeLight className={styles["track-play__like-svg_light"]} />
       ) : (
-        <Like className={styles["track__time-svg"]} />
+        <Like className={styles["track-play__like-svg"]} />
       )}
-    </div>
+    </>
   );
 }
 

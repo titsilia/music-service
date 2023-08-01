@@ -1,5 +1,6 @@
 import React from "react";
 import { useParams } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 import Bar from "../../blocks/bar/bar";
 import Footer from "../../blocks/footer";
@@ -12,6 +13,7 @@ import SlideBarPlaylists from "../../blocks/sidebar/sidebar-playlists";
 
 function Daily() {
   const { id } = useParams();
+  const getIdTrack = useSelector((store) => store.track.trackData.idTrack);
 
   return (
     <div className={styles.main}>
@@ -26,7 +28,7 @@ function Daily() {
         }
       />
       <SlideBarPlaylists />
-      <Bar />
+      {getIdTrack === "" ? <></> : <Bar />}
       <Footer />
     </div>
   );

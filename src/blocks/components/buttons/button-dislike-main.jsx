@@ -1,4 +1,4 @@
-import styles from "../../centerblock/centerblock-components/playlist-item.module.scss";
+import styles from "./buttons.module.scss";
 
 import { useThemeContext } from "../../../context/theme";
 
@@ -8,13 +8,13 @@ import { ReactComponent as DislikeLight } from "../../../assets/img/icon/light/d
 function ButtonDislike() {
   const { theme } = useThemeContext();
   return (
-      <>
-        {theme === "light" ? (
-          <DislikeLight className={styles["track__time-svg"]} />
-        ) : (
-          <Dislike className={styles["track__time-svg"]} />
-        )}
-      </>
+    <>
+      {theme === "light" ? (
+        <DislikeLight className={styles["track-play__like-svg_light"]} />
+      ) : (
+        <Dislike className={styles["track-play__like-svg"]} />
+      )}
+    </>
   );
 }
 

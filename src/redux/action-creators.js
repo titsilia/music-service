@@ -36,17 +36,35 @@ export const trackSlice = createSlice({
   initialState: {
     trackData: {
       urlTrack: "",
+      titleTrack: "",
+      authorTrack: "",
+      idTrack: "",
+      MusicData: "",
+      MusicDataShuffle: "",
     },
   },
   reducers: {
-    setTrack: (state, action) => {
+    setIdTrack: (state, action) => {
       state.trackData = {
         ...state.trackData,
-        urlTrack: action.payload,
+        idTrack: action.payload,
+      };
+    },
+    setMusicData: (state, action) => {
+      state.trackData = {
+        ...state.trackData,
+        MusicData: action.payload,
+      };
+    },
+    setMusicDataShuffle: (state, action) => {
+      state.trackData = {
+        ...state.trackData,
+        MusicDataShuffle: action.payload,
       };
     },
   },
 });
 
 export const { setAuthor, setYear, setGenre } = filtersSlice.actions;
-export const { setTrack } = trackSlice.actions;
+export const { setIdTrack, setMusicData, setMusicDataShuffle } =
+  trackSlice.actions;

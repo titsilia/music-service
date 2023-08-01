@@ -29,21 +29,17 @@ function PlaylistItem(props) {
 
   const [addSong] = useAddFavoriteMutation();
   const getIdTrack = (event) => {
-    const id = event.target.parentElement.parentElement.parentElement.id;
+    const id = event.target.closest(`.${styles.playlist__track}`).id;
+    console.log(event.target.closest(`.${styles.playlist__track}`))
     console.log(id);
+    console.log(event.target);
     addSong({ id, token });
-    if (data) {
-      data = data.map((track) => track.id);
-    }
   };
   const [deleteSong] = useDeleteFavoriteMutation();
   const getIdTrackDelete = (event) => {
-    const id = event.target.parentElement.parentElement.parentElement.id;
+    const id = event.target.closest(`.${styles.playlist__track}`).id;
     console.log(id);
     deleteSong({ id, token });
-    if (data) {
-      data = data.map((track) => track.id);
-    }
   };
 
   return (

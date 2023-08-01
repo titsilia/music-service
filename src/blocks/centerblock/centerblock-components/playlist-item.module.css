@@ -16,14 +16,4 @@
   align-items: center;
   width: 38%;
   gap: 17px;
-}
-.track__time-svg {
-  width: 14px;
-  height: 12px;
-  margin-right: 17px;
-  fill: transparent;
-  cursor: pointer;
-}
-.track__time-svg:hover * {
-  stroke: #ACACAC;
 }/*# sourceMappingURL=playlist-item.module.css.map */

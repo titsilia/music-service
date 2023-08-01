@@ -5,20 +5,20 @@ import styleBtn from "../../components/buttons/buttons.module.scss";
 import color from "../../../themes.module.css";
 
 import { useThemeContext } from "../../../context/theme";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
+import { setIdTrack, setMusicData } from "../../../redux/action-creators";
 
 import SkelRenderBar from "./skel-render-bar";
 import TrackRender from "./track-render";
 
-import ButtonPrev from "../../components/buttons/button-prev";
-import ButtonNext from "../../components/buttons/button-next";
-import ButtonRepeat from "../../components/buttons/button-repeat";
-import ButtonShuffle from "../../components/buttons/button-shuffle";
-import ButtonLike from "../../components/buttons/button-like";
-import ButtonDislike from "../../components/buttons/button-dislike";
+import ButtonDislikeBar from "../../components/buttons/button-dislike-bar";
+import ButtonLikeBar from "../../components/buttons/button-like-bar";
 
 import VolumeImage from "../../components/volume/volume-image";
 import VolumeProgress from "../../components/volume/volume-progress";
+
+import { ReactComponent as Prev } from "../../../assets/img/icon/prev.svg";
+import { ReactComponent as PrevLight } from "../../../assets/img/icon/light/prev-light.svg";
 
 import { ReactComponent as Play } from "../../../assets/img/icon/play.svg";
 import { ReactComponent as PlayLight } from "../../../assets/img/icon/light/play-light.svg";
@@ -26,16 +26,39 @@ import { ReactComponent as PlayLight } from "../../../assets/img/icon/light/play
 import { ReactComponent as Pause } from "../../../assets/img/icon/pause.svg";
 import { ReactComponent as PauseLight } from "../../../assets/img/icon/light/pause-light.svg";
 
+import { ReactComponent as Next } from "../../../assets/img/icon/next.svg";
+import { ReactComponent as NextLight } from "../../../assets/img/icon/light/next-light.svg";
+
+import { ReactComponent as Repeat } from "../../../assets/img/icon/repeat.svg";
+import { ReactComponent as RepeatLight } from "../../../assets/img/icon/light/repeat-light.svg";
+
+import { ReactComponent as Shuffle } from "../../../assets/img/icon/shuffle.svg";
+import { ReactComponent as ShuffleLight } from "../../../assets/img/icon/light/shuffle-light.svg";
+
 const { useState, useEffect, useRef } = React;
 
 function PlayerBlock() {
-  const getTrack = useSelector((store) => store.track.trackData.urlTrack);
-  console.log(getTrack);
+  const dispatch = useDispatch();
+  let getIdTrack = useSelector((store) => store.track.trackData.idTrack);
+
+  let getMusicData = useSelector((store) => store.track.trackData.MusicData);
+
+  getMusicData = getMusicData.map((track) => ({
+    id: track.id,
+    title: track.name,
+    author: track.author,
+    url: track.track_file,
+  }));
+
+  let positionTrack = getMusicData.map((elem) => +elem.id).indexOf(+getIdTrack);
+  let idTrack = getMusicData[positionTrack].id;
 
   const { theme } = useThemeContext();
   const [isLoading, setIsLoading] = useState(true);
 
-  const [isPlay, setPlay] = useState(false);
+  const [isPlay, setPlay] = useState(true);
+  const [isLoop, setLoop] = useState(false);
+  const [isShuffle, setShuffle] = useState(false);
 
   const audio = useRef(null);
   const progressLine = useRef(null);
@@ -47,6 +70,16 @@ function PlayerBlock() {
     } else {
       audio.current.play();
       setPlay(true);
+    }
+  }
+
+  function loopBtn() {
+    if (isLoop) {
+      audio.current.loop = false;
+      setLoop(false);
+    } else {
+      audio.current.loop = true;
+      setLoop(true);
     }
   }
 
@@ -68,13 +101,15 @@ function PlayerBlock() {
       window.play = setInterval(() => {
         console.log("au");
         const currentTime = audio.current.currentTime;
-
-        const procent = (currentTime / audioTime) * 100;
+        let procent = (currentTime / audioTime) * 100;
         progressLine.current.style.width = `${procent}%`;
 
         if (procent === 100) {
-          clearInterval(window.play);
-          setPlay(false);
+          if (isLoop) {
+            setPlay(true);
+          } else {
+            nextMusic();
+          }
         }
       }, 10);
     }
@@ -82,6 +117,34 @@ function PlayerBlock() {
       clearInterval(window.play);
     };
   });
+
+  function nextMusic() {
+    ++positionTrack;
+
+    if (positionTrack >= getMusicData.length - 1) {
+      positionTrack = 0;
+    }
+    console.log(positionTrack);
+    idTrack = getMusicData[positionTrack].id;
+    dispatch(setIdTrack(idTrack));
+  }
+
+  function prevMusic() {
+    procent === 0;
+
+    if (positionTrack === 0) {
+      positionTrack = 29;
+    }
+    --positionTrack;
+    let idTrack = getMusicData[positionTrack].id;
+    dispatch(setIdTrack(idTrack));
+  }
+
+  function shuffleMusic() {
+    getMusicData = getMusicData.sort(() => Math.random() - 0.5);
+    dispatch(setMusicData(getMusicData));
+    nextMusic();
+  }
 
   return (
     <>
@@ -99,7 +162,13 @@ function PlayerBlock() {
       <div className={styles["bar__player-block"]}>
         <div className={` ${styles["bar__player"]} ${styles.player} `}>
           <div className={styles.player__controls}>
-            <ButtonPrev />
+            <div onClick={prevMusic} className={styleBtn["player__btn-prev"]}>
+              {theme === "light" ? (
+                <PrevLight className={styleBtn["player__controls-btn_light"]} />
+              ) : (
+                <Prev className={styleBtn["player__controls-btn"]} />
+              )}
+            </div>
 
             <div
               onClick={playBtn}
@@ -107,20 +176,62 @@ function PlayerBlock() {
             >
               {theme === "light" ? (
                 isPlay ? (
-                  <PauseLight />
+                  <PauseLight
+                    className={styleBtn["player__controls-btn_light"]}
+                  />
                 ) : (
-                  <PlayLight />
+                  <PlayLight
+                    className={styleBtn["player__controls-btn_light"]}
+                  />
                 )
               ) : isPlay ? (
-                <Pause />
+                <Pause className={styleBtn["player__controls-btn"]} />
               ) : (
-                <Play />
+                <Play className={styleBtn["player__controls-btn"]} />
               )}
             </div>
 
-            <ButtonNext />
-            <ButtonRepeat />
-            <ButtonShuffle />
+            <div className={styleBtn["player__btn-next"]} onClick={nextMusic}>
+              {theme === "light" ? (
+                <NextLight className={styleBtn["player__controls-btn_light"]} />
+              ) : (
+                <Next className={styleBtn["player__controls-btn"]} />
+              )}
+            </div>
+
+            <div
+              onClick={loopBtn}
+              className={` ${styleBtn["player__btn-repeat"]} ${styleBtn["_btn-icon"]} `}
+            >
+              {theme === "light" ? (
+                <RepeatLight
+                  className={`${styleBtn["player__btn-repeat-svg_light"]} ${
+                    isLoop
+                      ? styleBtn["player__btn-repeat-svg_light_active"]
+                      : ""
+                  }`}
+                />
+              ) : (
+                <Repeat
+                  className={`${styleBtn["player__btn-repeat-svg"]} ${
+                    isLoop ? styleBtn["player__btn-repeat-svg_active"] : ""
+                  }`}
+                />
+              )}
+            </div>
+
+            <div
+              onClick={shuffleMusic}
+              className={` ${styleBtn["player__btn-shuffle"]} ${styleBtn["_btn-icon"]} `}
+            >
+              {theme === "light" ? (
+                <ShuffleLight
+                  className={`${styleBtn["player__btn-shuffle-svg_light"]}`}
+                />
+              ) : (
+                <Shuffle className={`${styleBtn["player__btn-shuffle-svg"]}`} />
+              )}
+            </div>
           </div>
 
           <div
@@ -131,14 +242,12 @@ function PlayerBlock() {
                 <SkelRenderBar />
               ) : (
                 <>
-                  <TrackRender author="Ты та..." album="Баста" />
+                  <TrackRender
+                    title={getMusicData[positionTrack].title}
+                    author={getMusicData[positionTrack].author}
+                  />
                 </>
               )}
-            </div>
-
-            <div className={styles["track-play__like-dis"]}>
-              <ButtonLike />
-              <ButtonDislike />
             </div>
           </div>
         </div>
@@ -151,7 +260,11 @@ function PlayerBlock() {
         </div>
       </div>
       <figure>
-        <audio ref={audio} src={getTrack}></audio>
+        <audio
+          autoPlay={isPlay}
+          ref={audio}
+          src={getMusicData[positionTrack].url}
+        ></audio>
       </figure>
     </>
   );
