@@ -13,9 +13,4 @@
 }
 .volume__progress-line {
   width: 109px;
-}
-
-input[type=range] {
-  width: 109px;
-  height: 2px;
 }/*# sourceMappingURL=volume.module.css.map */

@@ -1,20 +1,18 @@
 import React from "react";
 
 import TrackImagePlay from "../../components/track-play/track-image-play";
-import TitlePlay from "../../components/track-play/title-play";
 import AuthorPlay from "../../components/track-play/author-play";
+import AlbumPlay from "../../components/track-play/album-play";
 
 function TrackRender(props) {
-  const { title, author } = props;
-  return (
-    <>
-      <TrackImagePlay />
-      <div>
-        <TitlePlay title={title} />
+    const { author, album } = props;
+    return (
+      <>
+        <TrackImagePlay />
         <AuthorPlay author={author} />
-      </div>
-    </>
-  );
-}
+        <AlbumPlay album={album} />
+      </>
+    );
+  }
 
 export default TrackRender;

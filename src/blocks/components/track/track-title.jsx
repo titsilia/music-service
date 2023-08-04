@@ -6,16 +6,16 @@ import color from "../../../themes.module.css";
 import { useThemeContext } from "../../../context/theme";
 
 import { useDispatch } from "react-redux";
-import { setIdTrack } from "../../../redux/action-creators";
+import { setTrack } from "../../../redux/action-creators";
 
 function TrackTitle({ title, subtitle, href }) {
   const dispatch = useDispatch();
 
   const sendTrack = (event) => {
     event.preventDefault();
-    const parentId = event.target.closest(`.${styles.playlist__track}`).id;
-    console.log(parentId);
-    dispatch(setIdTrack(parentId));
+    const target = event.target.getAttribute("href");
+    console.log(target);
+    dispatch(setTrack(target));
   };
 
   const { theme } = useThemeContext();

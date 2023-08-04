@@ -48,15 +48,19 @@
 
 .track-play {
   &__contain {
-    display: flex;
-    gap: 12px;
+    width: auto;
+    display: grid;
+    grid-template-columns: auto 1fr;
+    grid-template-areas: "image author" "image album";
+    align-items: center;
+    column-gap: 12px;
   }
 
   &__like-dis {
     display: flex;
+    flex-direction: row;
     align-items: center;
-    margin-left: 32px;
-    gap: 39px;
+    margin-left: 26%;
   }
 }
 

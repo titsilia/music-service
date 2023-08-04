@@ -1,5 +1,4 @@
 import React from "react";
-import { useSelector } from "react-redux";
 
 import styles from "./main.module.css";
 
@@ -11,7 +10,6 @@ import Bar from "../../blocks/bar/bar";
 import Footer from "../../blocks/footer";
 
 function Main() {
-  const getIdTrack = useSelector((store) => store.track.trackData.idTrack);
   return (
     <>
       <div className={styles.main}>
@@ -19,7 +17,7 @@ function Main() {
         <CenterBlock />
         <SlideBar />
       </div>
-      {getIdTrack === "" ? <></> : <Bar />}
+      <Bar />
       <Footer />
     </>
   );

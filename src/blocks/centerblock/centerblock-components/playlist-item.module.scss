@@ -21,5 +21,15 @@
     width: 38%;
     gap: 17px;
   }
-  
+  // track-time
+  &__time-svg {
+    width: 14px;
+    height: 12px;
+    margin-right: 17px;
+    fill: transparent;
+    cursor: pointer;
+    &:hover * {
+      stroke: #ACACAC;
+    }
+  }
 }

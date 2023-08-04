@@ -7,10 +7,8 @@ function SkelRenderBar() {
   return (
     <>
       <SkelImage />
-      <div>
-        <SkelTrack />
-        <SkelTrack />
-      </div>
+      <SkelTrack />
+      <SkelTrack />
     </>
   );
 }

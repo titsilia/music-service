@@ -1,7 +1,10 @@
 import React from "react";
 
-import { useGetAllTracksQuery } from "../../redux/fetch";
-import { useSelector, useDispatch } from "react-redux";
+import {
+  useGetAllTracksQuery,
+  useGetAllFavoriteQuery,
+} from "../../redux/fetch";
+import { useSelector } from "react-redux";
 
 import styles from "./centerblock.module.css";
 import color from "../../themes.module.css";
@@ -11,22 +14,22 @@ import { useThemeContext } from "../../context/theme";
 import PlaylistItem from "./centerblock-components/playlist-item";
 import SkelRenderCenterblock from "./centerblock-components/skel-render-centerblock";
 
-import SearchInput from "../components/search/search";
-
 import VisibleYear from "./centerblock-components/visible-year";
 import VisibleAuthor from "./centerblock-components/visible-author";
 import VisibleGenre from "./centerblock-components/visible-genre";
 
+import { ReactComponent as Search } from "../../assets/img/icon/search.svg";
+import { ReactComponent as SearchLight } from "../../assets/img/icon/light/search-light.svg";
+
 import { ReactComponent as Watch } from "../../assets/img/icon/watch.svg";
 import { ReactComponent as WatchLight } from "../../assets/img/icon/light/watch-light.svg";
-3;
-import { setMusicData } from "../../redux/action-creators";
 
-const { useState } = React;
+const { useState, useEffect } = React;
 
 function CenterBlock() {
-  const dispatch = useDispatch();
   let response = useGetAllTracksQuery();
+
+  const token = localStorage.getItem("token");
 
   const { theme } = useThemeContext();
 
@@ -67,7 +70,8 @@ function CenterBlock() {
       break;
   }
   if (!response.data === {} || !response.isLoading) {
-    dispatch(setMusicData(response.data));
+    window.allTracks = response.data;
+
     response = response.data.filter((track) =>
       authorFilter !== null && genreFilter !== null
         ? track.author === authorFilter && track.genre === genreFilter
@@ -83,7 +87,26 @@ function CenterBlock() {
           : color.dark__main_background
       } `}
     >
-      <SearchInput />
+      <div
+        className={`${styles.centerblock__search} ${styles.search} ${
+          theme === "light" ? color.light__border : color.dark__border
+        } `}
+      >
+        {theme === "light" ? (
+          <SearchLight className={styles.search__svg} />
+        ) : (
+          <Search className={styles.search__svg} />
+        )}
+
+        <input
+          className={`${styles.search__text} ${
+            theme === "light" ? color.light__text : color.dark__text
+          }`}
+          type="search"
+          placeholder="Поиск"
+          name="search"
+        ></input>
+      </div>
 
       <h2
         className={`${styles.centerblock__h2} ${

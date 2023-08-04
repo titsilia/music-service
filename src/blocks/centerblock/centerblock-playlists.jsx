@@ -22,6 +22,7 @@ import { ReactComponent as WatchLight } from "../../assets/img/icon/light/watch-
 const { useState, useEffect } = React;
 
 function CenterBlockPlaylists({ h2 }) {
+
   const { id } = useParams();
   console.log(id);
   const { data, isLoading } = useGetSelectionQuery(id);
@@ -118,7 +119,6 @@ function CenterBlockPlaylists({ h2 }) {
           ) : (
             data.items.map((track) => (
               <PlaylistItem
-                id={track.id}
                 key={track.id}
                 title={track.name}
                 href={track.track_file}

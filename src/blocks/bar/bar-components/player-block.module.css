@@ -39,14 +39,19 @@
 }
 
 .track-play__contain {
-  display: flex;
-  gap: 12px;
+  width: auto;
+  display: grid;
+  grid-template-columns: auto 1fr;
+  grid-template-areas: "image author" "image album";
+  align-items: center;
+  -moz-column-gap: 12px;
+       column-gap: 12px;
 }
 .track-play__like-dis {
   display: flex;
+  flex-direction: row;
   align-items: center;
-  margin-left: 32px;
-  gap: 39px;
+  margin-left: 26%;
 }
 
 .volume__content {
