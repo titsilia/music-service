@@ -13,6 +13,6 @@ const rootReducer = combineReducers({
 // store
 export const store = configureStore({
   reducer: rootReducer,
-  middleware: (getDedault) =>
-    getDedault().concat(musicApi.middleware).concat(userApi.middleware),
+  middleware: (getDefault) =>
+    getDefault().concat(musicApi.middleware).concat(userApi.middleware),
 });
